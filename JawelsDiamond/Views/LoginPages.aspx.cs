@@ -9,8 +9,8 @@ using System.Web.UI.WebControls;
 
 namespace JawelsDiamond.Views
 {
-    public partial class LoginPage : System.Web.UI.Page
-    {
+	public partial class LoginPages : System.Web.UI.Page
+	{
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] != null || Request.Cookies["user_cookie"] != null)
@@ -51,7 +51,7 @@ namespace JawelsDiamond.Views
 
         protected void Link_Btn_ToRegister_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/RegisterPage.aspx");
+            Response.Redirect("RegisterPages.aspx");
         }
     }
 }

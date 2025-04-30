@@ -87,8 +87,9 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\LoginPage.aspx" />
-    <Content Include="Views\RegisterPage.aspx" />
+    <Content Include="Views\AddJewels.aspx" />
+    <Content Include="Views\RegisterPages.aspx" />
+    <Content Include="Views\LoginPages.aspx" />
     <Content Include="Views\ViewJewels.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -139,22 +140,29 @@
     <Compile Include="Model\TransactionHeader.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddJewels.aspx.cs">
+      <DependentUpon>AddJewels.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AddJewels.aspx.designer.cs">
+      <DependentUpon>AddJewels.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegisterPages.aspx.cs">
+      <DependentUpon>RegisterPages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\RegisterPages.aspx.designer.cs">
+      <DependentUpon>RegisterPages.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Repository\DatabaseSingleton.cs" />
     <Compile Include="Repository\JewelsRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
-    <Compile Include="Views\LoginPage.aspx.cs">
-      <DependentUpon>LoginPage.aspx</DependentUpon>
+    <Compile Include="Views\LoginPages.aspx.cs">
+      <DependentUpon>LoginPages.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\LoginPage.aspx.designer.cs">
-      <DependentUpon>LoginPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\RegisterPage.aspx.cs">
-      <DependentUpon>RegisterPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\RegisterPage.aspx.designer.cs">
-      <DependentUpon>RegisterPage.aspx</DependentUpon>
+    <Compile Include="Views\LoginPages.aspx.designer.cs">
+      <DependentUpon>LoginPages.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewJewels.aspx.cs">
       <DependentUpon>ViewJewels.aspx</DependentUpon>

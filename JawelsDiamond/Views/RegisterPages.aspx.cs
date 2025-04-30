@@ -6,10 +6,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace JawelsDiamond.Views
+namespace JawelsDiamond
 {
-    public partial class RegisterPage : System.Web.UI.Page
-    {
+	public partial class RegisterPages : System.Web.UI.Page
+	{
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["user"] != null || Request.Cookies["user_cookie"] != null)
@@ -54,12 +54,12 @@ namespace JawelsDiamond.Views
                 role = "Admin";
             }
             Lbl_Status.Text = UserRepository.CreateNewUser(email, username, password, selectedGender, selectedDOB, role);
-            Response.Redirect("~/Views/LoginPage.aspx");
+            Response.Redirect("LoginPages.aspx");
         }
 
         protected void Link_Btn_ToLogin_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/LoginPage.aspx");
+            Response.Redirect("LoginPages.aspx");
         }
     }
 }

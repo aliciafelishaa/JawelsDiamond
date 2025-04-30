@@ -11,17 +11,8 @@ namespace JawelsDiamond.Views
 {
 
 
-    public partial class RegisterPage
+    public partial class LoginPages
     {
-
-        /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
         /// Lbl_Email control.
@@ -42,24 +33,6 @@ namespace JawelsDiamond.Views
         protected global::System.Web.UI.WebControls.TextBox TB_Email;
 
         /// <summary>
-        /// Lbl_Username control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_Username;
-
-        /// <summary>
-        /// TB_Username control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_Username;
-
-        /// <summary>
         /// Lbl_Password control.
         /// </summary>
         /// <remarks>
@@ -78,58 +51,22 @@ namespace JawelsDiamond.Views
         protected global::System.Web.UI.WebControls.TextBox TB_Password;
 
         /// <summary>
-        /// Lbl_ConfirmPass control.
+        /// CBox_RememberMe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_ConfirmPass;
+        protected global::System.Web.UI.WebControls.CheckBox CBox_RememberMe;
 
         /// <summary>
-        /// TB_ConfirmPass control.
+        /// Lbl_RememberMe control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_ConfirmPass;
-
-        /// <summary>
-        /// Lbl_Gender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_Gender;
-
-        /// <summary>
-        /// RBL_Gender control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList RBL_Gender;
-
-        /// <summary>
-        /// Lbl_DOB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Lbl_DOB;
-
-        /// <summary>
-        /// TB_DOB control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TB_DOB;
+        protected global::System.Web.UI.WebControls.Label Lbl_RememberMe;
 
         /// <summary>
         /// Lbl_Status control.
@@ -141,21 +78,21 @@ namespace JawelsDiamond.Views
         protected global::System.Web.UI.WebControls.Label Lbl_Status;
 
         /// <summary>
-        /// Btn_Register control.
+        /// Btn_Login control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_Register;
+        protected global::System.Web.UI.WebControls.Button Btn_Login;
 
         /// <summary>
-        /// Link_Btn_ToLogin control.
+        /// Link_Btn_ToRegister control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton Link_Btn_ToLogin;
+        protected global::System.Web.UI.WebControls.LinkButton Link_Btn_ToRegister;
     }
 }
