@@ -11,7 +11,7 @@ namespace JawelsDiamond.Views
 {
 
 
-    public partial class C_ViewJewels
+    public partial class ViewJewels
     {
     }
 }

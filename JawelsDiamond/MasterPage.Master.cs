@@ -7,11 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace JawelsDiamond
 {
-	public partial class AdminMasterPage : System.Web.UI.MasterPage
+	public partial class MasterPage : System.Web.UI.MasterPage
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-            phAdmin.Visible = true;
-        }
+
+		}
 	}
 }

@@ -90,34 +90,17 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\A_ViewJewels.aspx" />
-    <Content Include="Views\C_ViewJewels.aspx" />
-    <Content Include="Views\G_ViewJewels.aspx" />
+    <Content Include="Views\ViewJewels.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminMasterPage.Master.cs">
-      <DependentUpon>AdminMasterPage.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AdminMasterPage.Master.designer.cs">
-      <DependentUpon>AdminMasterPage.Master</DependentUpon>
-    </Compile>
-    <Compile Include="CustMasterPage.Master.cs">
-      <DependentUpon>CustMasterPage.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CustMasterPage.Master.designer.cs">
-      <DependentUpon>CustMasterPage.Master</DependentUpon>
-    </Compile>
-    <Compile Include="GuestMasterPage.Master.cs">
-      <DependentUpon>GuestMasterPage.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GuestMasterPage.Master.designer.cs">
-      <DependentUpon>GuestMasterPage.Master</DependentUpon>
-    </Compile>
     <Compile Include="Handler\JewelsHandler.cs" />
+    <Compile Include="MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
     <Compile Include="Model\Cart.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -157,26 +140,12 @@
     </Compile>
     <Compile Include="Repository\DatabaseSingleton.cs" />
     <Compile Include="Repository\JewelsRepository.cs" />
-    <Compile Include="Views\A_ViewJewels.aspx.cs">
-      <DependentUpon>A_ViewJewels.aspx</DependentUpon>
+    <Compile Include="Views\ViewJewels.aspx.cs">
+      <DependentUpon>ViewJewels.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Views\A_ViewJewels.aspx.designer.cs">
-      <DependentUpon>A_ViewJewels.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\C_ViewJewels.aspx.cs">
-      <DependentUpon>C_ViewJewels.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\C_ViewJewels.aspx.designer.cs">
-      <DependentUpon>C_ViewJewels.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Views\G_ViewJewels.aspx.cs">
-      <DependentUpon>G_ViewJewels.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Views\G_ViewJewels.aspx.designer.cs">
-      <DependentUpon>G_ViewJewels.aspx</DependentUpon>
+    <Compile Include="Views\ViewJewels.aspx.designer.cs">
+      <DependentUpon>ViewJewels.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -188,9 +157,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
     <Content Include="libman.json" />
-    <Content Include="CustMasterPage.Master" />
-    <Content Include="AdminMasterPage.Master" />
-    <Content Include="GuestMasterPage.Master" />
+    <Content Include="MasterPage.Master" />
     <None Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

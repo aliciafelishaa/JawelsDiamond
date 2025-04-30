@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace JawelsDiamond.Views
 {
-	public partial class C_ViewJewels : System.Web.UI.Page
+	public partial class ViewJewels : System.Web.UI.Page
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
