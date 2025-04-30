@@ -2,5 +2,5 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <p>Test, Untuk masterpage blm dibenerin</p>
+    <p>View Jewells</p>
 </asp:Content>

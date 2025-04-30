@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -35,6 +36,27 @@ namespace JawelsDiamond
                         break;
                 }
             }
+        }
+
+        protected void SignIn_Button(object sender, EventArgs e)
+        {
+            Response.Redirect("LoginPages.aspx");
+        }
+
+        protected void SignUp_Button(object sender, EventArgs e)
+        {
+            Response.Redirect("RegisterPages.aspx");
+        }
+
+        protected void SignOut_Button(object sender, EventArgs e)
+        {
+            String[] cookies = Request.Cookies.AllKeys;
+            foreach (string s in cookies)
+            {
+                Request.Cookies[s].Expires = DateTime.Now.AddDays(-1);
+            }
+            Session.Remove("user");
+            Response.Redirect("ViewJewels.aspx");
         }
     }
 }
