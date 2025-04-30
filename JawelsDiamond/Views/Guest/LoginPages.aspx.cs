@@ -41,7 +41,7 @@ namespace JawelsDiamond.Views
                 {
                     HttpCookie cookie = new HttpCookie("user_cookie");
                     cookie.Value = loginUser.UserID.ToString();
-                    cookie.Expires = DateTime.Now.AddDays(1);
+                    cookie.Expires = DateTime.Now.AddMinutes(1);
                     Response.Cookies.Add(cookie);
                 }
                 Session["user"] = loginUser;

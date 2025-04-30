@@ -40,12 +40,12 @@ namespace JawelsDiamond
 
         protected void SignIn_Button(object sender, EventArgs e)
         {
-            Response.Redirect("LoginPages.aspx");
+            Response.Redirect("~/Views/Guest/LoginPages.aspx");
         }
 
         protected void SignUp_Button(object sender, EventArgs e)
         {
-            Response.Redirect("RegisterPages.aspx");
+            Response.Redirect("~/Views/Guest/RegisterPages.aspx");
         }
 
         protected void SignOut_Button(object sender, EventArgs e)
@@ -55,7 +55,7 @@ namespace JawelsDiamond
             {
                 Request.Cookies[s].Expires = DateTime.Now.AddDays(-1);
             }
-            Session.Remove("user");
+            Session.Clear();
             Response.Redirect("ViewJewels.aspx");
         }
     }
