@@ -87,13 +87,13 @@ namespace JawelsDiamond
         protected global::System.Web.UI.WebControls.PlaceHolder phCustomer;
 
         /// <summary>
-        /// Btn_SignOut control.
+        /// Btn_SignOut2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Btn_SignOut;
+        protected global::System.Web.UI.WebControls.Button Btn_SignOut2;
 
         /// <summary>
         /// MainContent control.

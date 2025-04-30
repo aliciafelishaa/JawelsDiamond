@@ -96,7 +96,7 @@
                         </li>
                       </ul>
                         <div style="gap:30px">
-                           <asp:Button ID="Btn_SignOut" runat="server" CssClass="btn btn-outline-primary" Text="Log Out" OnClick="SignOut_Button" />
+                           <asp:Button ID="Btn_SignOut2" runat="server" CssClass="btn btn-outline-primary" Text="Log Out" OnClick="SignOut_Button" />
                         </div> 
                     </div>
                   </div>
