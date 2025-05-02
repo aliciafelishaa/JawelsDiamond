@@ -38,11 +38,28 @@ namespace JawelsDiamond.Repository
 
         public static void DeleteJewel(int jewelId)
         {
+            var cartItems = db.Carts.Where(c => c.JewelID == jewelId).ToList();
+            if (cartItems.Any()) db.Carts.RemoveRange(cartItems);
+
+            var trxDetails = db.TransactionDetails.Where(td => td.JewelID == jewelId).ToList();
+            if (trxDetails.Any()) db.TransactionDetails.RemoveRange(trxDetails);
+
             var jewel = db.MsJewels.Find(jewelId);
             if (jewel != null)
             {
                 db.MsJewels.Remove(jewel);
                 db.SaveChanges();
+            }
+
+        }
+
+        public static void EditJewel(int jewelId)
+        {  
+            var jewel = db.MsJewels.Find(jewelId);
+            if (jewel != null)
+            {
+                db.SaveChanges();
+                
             }
         }
     }

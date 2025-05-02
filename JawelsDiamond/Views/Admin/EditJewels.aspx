@@ -33,26 +33,42 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <div class="form-container">
-        <h2>Edit Jewel</h2>
-        <asp:Label ID="lblMessage" runat="server" ForeColor="Red"></asp:Label>
-        <asp:HiddenField ID="hfJewelID" runat="server" />
-        <asp:Label ID="lblJewelName" runat="server" Text="Jewel Name"></asp:Label>
-        <asp:TextBox ID="txtJewelName" runat="server"></asp:TextBox>
+    <h2>Edit Jewels</h2>
+     <div class="form-container">
+     
+         <%--Jewel Name--%>
+         <div>
+             <asp:Label ID="Label1" runat="server" Text="Jewel Name"></asp:Label>
+             <asp:TextBox ID="JewelName" runat="server"></asp:TextBox>
+         </div>
+         <%--Category--%>
+         <div>
+             <asp:Label ID="Label2" runat="server" Text="Category"></asp:Label>
+             <asp:DropDownList ID="JewelCategory" runat="server"></asp:DropDownList>
+         </div>
+         <%--Brand--%>
+         <div>
+             <asp:Label ID="Label3" runat="server" Text="Brand"></asp:Label>
+             <asp:DropDownList ID="JewelBrand" runat="server"></asp:DropDownList>
+         </div>
+         <%--Price--%>
+         <div>
+             <asp:Label ID="Label4" runat="server" Text="Price"></asp:Label>
+             <asp:TextBox ID="JewelPrice" runat="server"></asp:TextBox>
+         </div>
+         <%--Release Year--%>
+         <div>
+             <asp:Label ID="Label5" runat="server" Text="Release Year"></asp:Label>
+              <asp:TextBox ID="JewelReleaseYear" runat="server"></asp:TextBox>
+         </div>
+         
+         <%-- Submit --%>
+         <div>
+         <asp:Button ID="Button2" runat="server" Text="Save Changes" OnClick="SaveBtn_Click"/>
+         <asp:Button ID="Button3" runat="server" Text="Cancel" OnClick="CancelBtn_Click"/>
+         </div>
 
-        <asp:Label ID="lblCategory" runat="server" Text="Category"></asp:Label>
-        <asp:DropDownList ID="ddlCategory" runat="server"></asp:DropDownList>
-
-        <asp:Label ID="lblBrand" runat="server" Text="Brand"></asp:Label>
-        <asp:DropDownList ID="ddlBrand" runat="server"></asp:DropDownList>
-
-        <asp:Label ID="lblPrice" runat="server" Text="Price"></asp:Label>
-        <asp:TextBox ID="txtPrice" runat="server" TextMode="Number"></asp:TextBox>
-
-        <asp:Label ID="lblReleaseYear" runat="server" Text="Release Year"></asp:Label>
-        <asp:TextBox ID="txtReleaseYear" runat="server" TextMode="Number"></asp:TextBox>
-
-        <asp:Button ID="btnSave" runat="server" Text="Save Changes" OnClick="btnSave_Click" />
-        <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
-    </div>
+         <%--Error Message--%>
+         <asp:Label ID="errorMsg" runat="server" Text="Input the form" ForeColor="Red"></asp:Label>
+ </div>
 </asp:Content>

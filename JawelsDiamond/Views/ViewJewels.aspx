@@ -41,7 +41,7 @@
         <Columns>
             <asp:BoundField DataField="JewelID" HeaderText="Jewel ID" SortExpression="JewelID"></asp:BoundField>
             <asp:BoundField DataField="JewelName" HeaderText="Jewel Name" SortExpression="JewelName"></asp:BoundField>
-            <asp:BoundField DataField="JewelPrice" HeaderText="Jewel Price" SortExpression="JewelPrice"></asp:BoundField>
+           <asp:BoundField DataField="JewelPrice" HeaderText="Jewel Price" DataFormatString="{0:C}" HtmlEncode="false" SortExpression="JewelPrice" />
             
             <asp:HyperLinkField DataNavigateUrlFields="JewelID" DataNavigateUrlFormatString="JewelDetail.aspx?id={0}" Text="See Details" HeaderText="Actions"></asp:HyperLinkField>
         </Columns>

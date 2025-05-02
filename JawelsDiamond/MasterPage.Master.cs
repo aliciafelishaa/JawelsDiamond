@@ -35,6 +35,8 @@ namespace JawelsDiamond
                         phGuest.Visible = true;
                         break;
                 }
+
+                //Response.Write("DEBUG - Session role: " + (Session["role"] ?? "null"));
             }
         }
 

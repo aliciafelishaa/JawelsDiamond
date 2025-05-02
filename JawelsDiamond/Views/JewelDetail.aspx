@@ -39,10 +39,45 @@
             background-color: #0056b3;
         }
         .header-jwls{
-    display: flex;
-    align-items: center;
-    justify-content: center
-}
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+        .button-container {
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        /* Style umum untuk semua tombol di dalam button-container */
+        .button-container input[type="submit"], 
+        .button-container input[type="button"], 
+        .button-container button {
+            padding: 11px 28px;
+            border: none;
+            border-radius: 24px;
+            font-size: 1rem;
+            font-family: inherit;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            outline: none;
+        }
+
+        /* Edit button: biru muda */
+        .button-container #btnEdit {
+            background-color: #2196f3;
+            color: #f9f9f9;
+        }
+
+        /* Delete button: merah */
+        .button-container #btnDelet {
+            background-color: #e53935;
+            color: red;
+        }
+
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">

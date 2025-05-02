@@ -175,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AddItem.cs" />
+    <Compile Include="Controller\UpdateItem.cs" />
     <Compile Include="Factory\JewelFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="Handler\JewelsHandler.cs" />

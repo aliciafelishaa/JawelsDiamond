@@ -1,4 +1,5 @@
-﻿using JawelsDiamond.Repository;
+﻿using JawelsDiamond.Model;
+using JawelsDiamond.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,20 @@ namespace JawelsDiamond.Views
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-            int jewelId = Convert.ToInt32(Request.QueryString["id"]);
-			if(jewelId == null)
-			{
+            string idParam = Request.QueryString["id"];
+
+            if (string.IsNullOrEmpty(idParam) || !int.TryParse(idParam, out int jewelId))
+            {
                 Response.Redirect("~/Views/ViewJewels.aspx");
+                return;
+            }
+
+            if (!IsPostBack)
+            {
+                if (jewelId > 0)
+                {
+                    LoadJewels(jewelId);
+                }
             }
             if (!IsPostBack)
 			{	
@@ -24,8 +35,19 @@ namespace JawelsDiamond.Views
 					LoadJewels(jewelId);
 				}
 			}
-			
-		}
+
+            if (Session["user"] == null && Request.Cookies["user_cookie"] != null)
+            {
+                int userId = Convert.ToInt32(Request.Cookies["user_cookie"].Value);
+                MsUser user = UserRepository.findJewel(userId);
+                if (user != null)
+                {
+                    Session["user"] = user;
+                    Session["role"] = user.UserRole.ToLower();
+                }
+            }
+
+        }
 
 		private void LoadJewels(int jewelID)
 		{
@@ -41,21 +63,22 @@ namespace JawelsDiamond.Views
 				lblReleaseYear.Text = jewels.JewelReleaseYear.ToString();
 
 				string role = Session["role"] as string;
-                lblJewelName.Text += " (Role: " + role + ")";
-
-                if (role == "admin")
+                
+				if(role == null)
+				{
+                    Response.Redirect("~/Views/Guest/RegisterPages.aspx");
+                    return;
+                }
+                else if (role == "admin")
 				{
                     adminButtons.Style["display"] = "block";
 
 				}
-				else if(role=="guest")
+				else if(role == "customer")
 				{
                     addToCartBtn.Style["display"] = "block";
 				}
-				else
-				{
-                    Response.Redirect("~/Views/Guest/LoginPages.aspx");
-                }
+				
 			}
 
         }
@@ -63,7 +86,7 @@ namespace JawelsDiamond.Views
 		protected void btnEdit_Click(object sender, EventArgs e)
         {
             int jewelId = Convert.ToInt32(Request.QueryString["id"]);
-			Response.Redirect("EditJewels.aspx?id=" + jewelId);
+			Response.Redirect("~/Views/Admin/EditJewels.aspx?id=" + jewelId);
         }
 
 
