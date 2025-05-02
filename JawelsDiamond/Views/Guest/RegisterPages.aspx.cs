@@ -12,10 +12,7 @@ namespace JawelsDiamond
 	{
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] != null || Request.Cookies["user_cookie"] != null)
-            {
-                Response.Redirect("~/Views/ViewJewels.aspx");
-            }
+            
         }
 
         protected void Btn_Register_Click(object sender, EventArgs e)
@@ -48,10 +45,10 @@ namespace JawelsDiamond
                 Lbl_Status.Text = "Date must be earlier than 01/01/2010.";
                 return;
             }
-            String role = "Customer";
+            String role = "customer";
             if (email.Contains("admin"))
             {
-                role = "Admin";
+                role = "admin";
             }
             Lbl_Status.Text = UserRepository.CreateNewUser(email, username, password, selectedGender, selectedDOB, role);
             Response.Redirect("LoginPages.aspx");

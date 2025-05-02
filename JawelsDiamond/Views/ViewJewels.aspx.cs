@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JawelsDiamond.Repository;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,22 @@ namespace JawelsDiamond.Views
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-
+			if (!IsPostBack)
+			{
+				LoadJewels();
+			}
 		}
-	}
+
+		private void LoadJewels()
+		{
+			var jewels = JewelsRepository.getJewel();
+			JewelGrid.DataSource = jewels;
+			JewelGrid.DataBind();
+		}
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

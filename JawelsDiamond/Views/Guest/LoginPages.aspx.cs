@@ -13,10 +13,7 @@ namespace JawelsDiamond.Views
 	{
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["user"] != null || Request.Cookies["user_cookie"] != null)
-            {
-                Response.Redirect("~/Views/ViewJewels.aspx");
-            }
+            
         }
 
         protected void Btn_Login_Click(object sender, EventArgs e)
@@ -29,6 +26,7 @@ namespace JawelsDiamond.Views
                 Lbl_Status.Text = "All fields must be filled.";
                 return;
             }
+
             MsUser loginUser = UserRepository.LoginUser(email, password);
             if (loginUser == null)
             {
@@ -41,10 +39,11 @@ namespace JawelsDiamond.Views
                 {
                     HttpCookie cookie = new HttpCookie("user_cookie");
                     cookie.Value = loginUser.UserID.ToString();
-                    cookie.Expires = DateTime.Now.AddDays(1);
+                    cookie.Expires = DateTime.Now.AddMinutes(1);
                     Response.Cookies.Add(cookie);
                 }
                 Session["user"] = loginUser;
+                Session["role"] = loginUser.UserRole.ToLower() ?? "guest";
                 Response.Redirect("~/Views/ViewJewels.aspx");
             }
         }
