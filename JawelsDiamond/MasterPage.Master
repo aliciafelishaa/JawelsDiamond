@@ -25,18 +25,11 @@
                     <div class="collapse navbar-collapse" id="navbarText">
                       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="#">Home</a>
-                        </li>
-                        <%--<li class="nav-item">
-                          <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">Pricing</a>
-                        </li>--%>
+                          <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/Views/ViewJewels.aspx" CssClass="nav-link">Home</asp:HyperLink>
                       </ul>
                         <div style="gap:30px">
-                          <button type="button" class="btn btn-outline-primary">Sign In</button>
-                           <button class="btn btn-primary">Sign Up</button>
+                            <asp:Button ID="Btn_SignIn" runat="server" CssClass="btn btn-outline-primary" Text="Sign In" OnClick="SignIn_Button" />
+                            <asp:Button ID="Btn_SignUp" runat="server" CssClass="btn btn-primary" Text="Sign Up" OnClick="SignUp_Button" />
                         </div> 
                     </div>
                   </div>
@@ -54,25 +47,24 @@
                     <div class="collapse navbar-collapse" id="navbarText">
                       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="#">Home</a>
+                          <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Views/ViewJewels.aspx" CssClass="nav-link">Home</asp:HyperLink>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Add Jewel</a>
+                             <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Views/AddJewels.aspx" CssClass="nav-link">Add Jewel</asp:HyperLink>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Reports</a>
+                          <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="#" CssClass="nav-link">Reports</asp:HyperLink>
                         </li>
                           <li class="nav-item">
-                          <a class="nav-link" href="#">Handle Orders</a>
+                          <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="#" CssClass="nav-link">Handle Order</asp:HyperLink>
                         </li>
                           </li>
                           <li class="nav-item">
-                          <a class="nav-link" href="#">Profile</a>
+                          <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="#" CssClass="nav-link">Profile</asp:HyperLink>
                         </li>
                       </ul>
                         <div style="gap:30px">
-                          <button type="button" class="btn btn-outline-primary">Sign In</button>
-                           <button class="btn btn-primary">Log Out</button>
+                           <asp:Button ID="Btn_SignOut" runat="server" CssClass="btn btn-outline-primary" Text="Log Out" OnClick="SignOut_Button" />
                         </div> 
                     </div>
                   </div>
@@ -90,21 +82,20 @@
                     <div class="collapse navbar-collapse" id="navbarText">
                       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                          <a class="nav-link active" aria-current="page" href="#">Home</a>
+                          <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/Views/ViewJewels.aspx" CssClass="nav-link">Home</asp:HyperLink>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">Cart</a>
+                          <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="#" CssClass="nav-link">Cart</asp:HyperLink>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" href="#">My Orders</a>
+                          <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="#" CssClass="nav-link">My Orders</asp:HyperLink>
                         </li>
                           <li class="nav-item">
-                          <a class="nav-link" href="#">Profile</a>
+                          <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="#" CssClass="nav-link">Profile</asp:HyperLink>
                         </li>
                       </ul>
                         <div style="gap:30px">
-                          <button type="button" class="btn btn-outline-primary">Sign In</button>
-                           <button class="btn btn-primary">Log Out</button>
+                           <asp:Button ID="Btn_SignOut2" runat="server" CssClass="btn btn-outline-primary" Text="Log Out" OnClick="SignOut_Button" />
                         </div> 
                     </div>
                   </div>
@@ -117,7 +108,7 @@
         </div>
         <%--Footer--%>
         <footer tyle="margin-top:40px; text-align:center;">
-            <p>&copy; 2025 JAwels & Diamonds</p>
+            <p>&copy; 2025 Jawels & Diamonds</p>
         </footer>
     </form>
 </body>

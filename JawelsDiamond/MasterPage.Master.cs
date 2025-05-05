@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -34,7 +35,30 @@ namespace JawelsDiamond
                         phGuest.Visible = true;
                         break;
                 }
+
+                //Response.Write("DEBUG - Session role: " + (Session["role"] ?? "null"));
             }
+        }
+
+        protected void SignIn_Button(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/Guest/LoginPages.aspx");
+        }
+
+        protected void SignUp_Button(object sender, EventArgs e)
+        {
+            Response.Redirect("~/Views/Guest/RegisterPages.aspx");
+        }
+
+        protected void SignOut_Button(object sender, EventArgs e)
+        {
+            String[] cookies = Request.Cookies.AllKeys;
+            foreach (string s in cookies)
+            {
+                Request.Cookies[s].Expires = DateTime.Now.AddDays(-1);
+            }
+            Session.Clear();
+            Response.Redirect("ViewJewels.aspx");
         }
     }
 }
