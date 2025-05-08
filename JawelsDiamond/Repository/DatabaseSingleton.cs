@@ -10,7 +10,7 @@ namespace JawelsDiamond.Repository
     {
         private static Database1Entities db;
 
-        public static Database1Entities getData()
+        public static Database1Entities getInstance()
         {
             if(db == null)
             {

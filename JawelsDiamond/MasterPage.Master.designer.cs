@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace JawelsDiamond
+namespace JawelsDiamond.MasterPage
 {
 
 
-    public partial class MasterPage
+    public partial class Master
     {
 
         /// <summary>
@@ -150,13 +150,13 @@ namespace JawelsDiamond
         protected global::System.Web.UI.WebControls.HyperLink HyperLink10;
 
         /// <summary>
-        /// HyperLink5 control.
+        /// Btn_goToCart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink HyperLink5;
+        protected global::System.Web.UI.WebControls.HyperLink Btn_goToCart;
 
         /// <summary>
         /// HyperLink6 control.

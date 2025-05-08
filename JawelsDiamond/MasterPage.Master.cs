@@ -5,10 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using JawelsDiamond.Model;
 
-namespace JawelsDiamond
+namespace JawelsDiamond.MasterPage
 {
-	public partial class MasterPage : System.Web.UI.MasterPage
+	public partial class Master : System.Web.UI.MasterPage
 	{
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -37,6 +38,14 @@ namespace JawelsDiamond
                 }
 
                 //Response.Write("DEBUG - Session role: " + (Session["role"] ?? "null"));
+
+                
+            }
+
+            if (Session["user"] != null)
+            {
+                MsUser user = (MsUser)Session["user"];
+                Btn_goToCart.NavigateUrl = $"~/Views/Customer/CartPage.aspx?userId={user.UserID}";
             }
         }
 
