@@ -89,6 +89,8 @@
     </Content>
     <Content Include="Views\Admin\AddJewels.aspx" />
     <Content Include="Views\Admin\EditJewels.aspx" />
+    <Content Include="Views\Customer\CartPage.aspx" />
+    <Content Include="Views\Customer\UpdateJewelQuantityPage.aspx" />
     <Content Include="Views\Guest\LoginPages.aspx" />
     <Content Include="Views\Guest\RegisterPages.aspx" />
     <Content Include="Views\JewelDetail.aspx" />
@@ -98,6 +100,7 @@
   <ItemGroup>
     <Compile Include="Controller\AddItem.cs" />
     <Compile Include="Controller\UpdateItem.cs" />
+    <Compile Include="Factory\CartFactory.cs" />
     <Compile Include="Factory\JewelFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
     <Compile Include="Handler\JewelsHandler.cs" />
@@ -145,6 +148,7 @@
     <Compile Include="Model\TransactionHeader.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Repository\CartRepository.cs" />
     <Compile Include="Repository\DatabaseSingleton.cs" />
     <Compile Include="Repository\JewelsRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
@@ -161,6 +165,20 @@
     </Compile>
     <Compile Include="Views\Admin\EditJewels.aspx.designer.cs">
       <DependentUpon>EditJewels.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\CartPage.aspx.cs">
+      <DependentUpon>CartPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\CartPage.aspx.designer.cs">
+      <DependentUpon>CartPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\UpdateJewelQuantityPage.aspx.cs">
+      <DependentUpon>UpdateJewelQuantityPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\UpdateJewelQuantityPage.aspx.designer.cs">
+      <DependentUpon>UpdateJewelQuantityPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Guest\LoginPages.aspx.cs">
       <DependentUpon>LoginPages.aspx</DependentUpon>
