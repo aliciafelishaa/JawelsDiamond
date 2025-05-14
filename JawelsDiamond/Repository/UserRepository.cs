@@ -33,5 +33,15 @@ namespace JawelsDiamond.Repository
         {
             return (from usersid in db.MsUsers where usersid.UserID == id select usersid).FirstOrDefault();
         }
+
+        public static void UpdateUserPassword(MsUser user)
+        {
+            var existingUser = db.MsUsers.FirstOrDefault(u => u.UserID == user.UserID);
+            if (existingUser != null)
+            {
+                existingUser.UserPassword = user.UserPassword; // Update password
+                db.SaveChanges();
+            }
+        }
     }
 }
