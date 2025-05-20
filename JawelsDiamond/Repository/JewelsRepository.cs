@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Entity;
 
 namespace JawelsDiamond.Repository
 {
@@ -33,7 +34,13 @@ namespace JawelsDiamond.Repository
 
         public static MsJewel findJewel(int id)
         {
-            return (from jwl_id in db.MsJewels where jwl_id.JewelID == id select jwl_id).FirstOrDefault();
+
+            //return db.MsJewels.FirstOrDefault(j => j.JewelID == id);
+            using (var db = new Database1Entities())
+            {
+                return db.MsJewels.Include(j => j.MsCategory).Include(j => j.MsBrand).FirstOrDefault(j => j.JewelID == id);
+            }
+            //return (from jwl_id in db.MsJewels where jwl_id.JewelID == id select jwl_id).FirstOrDefault();
         }
 
         public static void DeleteJewel(int jewelId)
@@ -52,7 +59,6 @@ namespace JawelsDiamond.Repository
             }
 
         }
-
         public static void EditJewel(int jewelId)
         {  
             var jewel = db.MsJewels.Find(jewelId);
@@ -61,6 +67,16 @@ namespace JawelsDiamond.Repository
                 db.SaveChanges();
                 
             }
+        }
+
+        public static String GetBrandName(int brandId)
+        {
+            MsBrand brand = db.MsBrands.Find(brandId);
+            if (brand != null)
+            {
+                return brand.BrandName;
+            }
+            return null;
         }
     }
 }

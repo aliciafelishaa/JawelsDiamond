@@ -44,7 +44,7 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
+                    <div class="collapse navbar-collapse" id="navbarText2">
                       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                           <asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/Views/ViewJewels.aspx" CssClass="nav-link">Home</asp:HyperLink>
@@ -58,7 +58,6 @@
                           <li class="nav-item">
                           <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="#" CssClass="nav-link">Handle Order</asp:HyperLink>
                         </li>
-                          </li>
                           <li class="nav-item">
                           <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="#" CssClass="nav-link">Profile</asp:HyperLink>
                         </li>
@@ -79,13 +78,13 @@
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarText">
+                    <div class="collapse navbar-collapse" id="navbarText3">
                       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
                           <asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/Views/ViewJewels.aspx" CssClass="nav-link">Home</asp:HyperLink>
                         </li>
                         <li class="nav-item">
-                          <asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="#" CssClass="nav-link">Cart</asp:HyperLink>
+                           <asp:HyperLink ID="Btn_goToCart" runat="server" NavigateUrl="#" CssClass="nav-link">Cart</asp:HyperLink>
                         </li>
                         <li class="nav-item">
                           <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="#" CssClass="nav-link">My Orders</asp:HyperLink>

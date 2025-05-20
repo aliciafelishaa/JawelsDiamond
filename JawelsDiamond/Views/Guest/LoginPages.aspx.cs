@@ -13,7 +13,32 @@ namespace JawelsDiamond.Views
 	{
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            {
+                if (Session["user"] != null)
+                {
+                    Response.Redirect("~/Views/ViewJewels.aspx");
+                    return;
+                }
+
+                // Attempt auto-login via cookie
+                HttpCookie cookie = Request.Cookies["user_cookie"];
+                if (cookie != null)
+                {
+                    int userId;
+                    if (int.TryParse(cookie.Value, out userId))
+                    {
+                        MsUser user = UserRepository.findJewel(userId);
+                        if (user != null)
+                        {
+                            Session["user"] = user;
+                            Session["role"] = user.UserRole.ToLower() ?? "guest";
+                            Response.Redirect("~/Views/ViewJewels.aspx");
+                            return;
+                        }
+                    }
+                }
+            }
         }
 
         protected void Btn_Login_Click(object sender, EventArgs e)
@@ -39,7 +64,8 @@ namespace JawelsDiamond.Views
                 {
                     HttpCookie cookie = new HttpCookie("user_cookie");
                     cookie.Value = loginUser.UserID.ToString();
-                    cookie.Expires = DateTime.Now.AddMinutes(1);
+                    //cookie.Expires = DateTime.Now.AddMinutes(1);
+                    cookie.Expires = DateTime.Now.AddHours(1);
                     Response.Cookies.Add(cookie);
                 }
                 Session["user"] = loginUser;
