@@ -59,7 +59,7 @@ namespace JawelsDiamond.Views
 				lblJewelBrand.Text = jewels.MsBrand.BrandName;
 				lblCountryOrigin.Text = jewels.MsBrand.BrandCountry;
 				lblClass.Text = jewels.MsBrand.BrandClass;
-				lblPrice.Text = "Rp. " + jewels.JewelPrice.ToString();
+				lblPrice.Text = "$" + jewels.JewelPrice.ToString();
 				lblReleaseYear.Text = jewels.JewelReleaseYear.ToString();
 
 				string role = Session["role"] as string;
@@ -99,7 +99,29 @@ namespace JawelsDiamond.Views
 
         protected void btnAddToCart_Click(object sender, EventArgs e)
         {
+            if (Session["user"] == null)
+            {
+                Response.Redirect("~/Views/Guest/LoginPages.aspx");
+                return;
+            }
 
+            MsUser currentUser = (MsUser)Session["user"];
+            int userId = currentUser.UserID;
+
+            string idParam = Request.QueryString["id"];
+            if (string.IsNullOrEmpty(idParam) || !int.TryParse(idParam, out int jewelId))
+            {
+                Response.Redirect("~/Views/ViewJewels.aspx");
+                return;
+            }
+
+            int quantity = 1;
+            //System.Diagnostics.Debug.WriteLine($"id: {idParam}, Name={userId}");
+            // Call repository method to insert into cart
+            CartRepository.AddToCart(userId, jewelId, quantity);
+
+            // Redirect to user's cart page
+            Response.Redirect($"~/Views/Customer/CartPage.aspx?userId={userId}");
         }
     }
 }
