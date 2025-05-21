@@ -53,7 +53,7 @@
                              <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/Views/Admin/AddJewels.aspx" CssClass="nav-link">Add Jewel</asp:HyperLink>
                         </li>
                         <li class="nav-item">
-                          <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="#" CssClass="nav-link">Reports</asp:HyperLink>
+                          <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/Views/Admin/Report.aspx" CssClass="nav-link">Reports</asp:HyperLink>
                         </li>
                           <li class="nav-item">
                           <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/Views/Admin/HandleOrder.aspx" CssClass="nav-link">Handle Order</asp:HyperLink>

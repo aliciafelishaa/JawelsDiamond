@@ -59,13 +59,17 @@ namespace JawelsDiamond
 
         protected void SignOut_Button(object sender, EventArgs e)
         {
-            String[] cookies = Request.Cookies.AllKeys;
-            foreach (string s in cookies)
+            foreach (string cookieKey in Request.Cookies.AllKeys)
             {
-                Request.Cookies[s].Expires = DateTime.Now.AddDays(-1);
+                HttpCookie cookie = new HttpCookie(cookieKey);
+                cookie.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(cookie);
             }
+
             Session.Clear();
-            Response.Redirect("ViewJewels.aspx");
+            Session.Abandon();
+
+            Response.Redirect("~/Views/Guest/LoginPages.aspx");
         }
     }
 }

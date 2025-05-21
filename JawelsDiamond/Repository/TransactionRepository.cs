@@ -32,5 +32,11 @@ namespace JawelsDiamond.Repository
             }
         }
 
+        public static List<TransactionHeader> GetFinishedTransaction()
+        {
+            var finishedTransactions = (from x in db.TransactionHeaders where x.TransactionStatus == "Done" select x).ToList();
+
+            return finishedTransactions;
+        }
     }
 }
