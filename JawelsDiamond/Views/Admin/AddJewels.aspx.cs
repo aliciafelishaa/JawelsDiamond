@@ -10,16 +10,14 @@ using System.Web.UI.WebControls;
 
 namespace JawelsDiamond.Views
 {
-	public partial class AddJewels : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
-            Session["role"] = "admin";
-            string role = Session["role"] as string;
-
-            if (Session["user"] != null || Request.Cookies["user_cookie"] != null || role!="admin")
+    public partial class AddJewels : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (Session["user"] == null || Session["role"].ToString() != "admin")
             {
                 Response.Redirect("~/Views/ViewJewels.aspx");
+                return;
             }
 
             if (!IsPostBack)
@@ -27,7 +25,7 @@ namespace JawelsDiamond.Views
                 LoadBrands();
                 LoadCategory();
             }
-            
+
         }
 
         private void LoadBrands()

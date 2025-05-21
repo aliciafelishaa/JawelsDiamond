@@ -10,19 +10,19 @@ using System.Web.UI.WebControls;
 
 namespace JawelsDiamond.Views.Admin
 {
-	public partial class EditJewels : System.Web.UI.Page
-	{
-		protected void Page_Load(object sender, EventArgs e)
-		{
+    public partial class EditJewels : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
             int jewelId = Convert.ToInt32(Request.QueryString["id"]);
-			if (!IsPostBack)
-			{
-				LoadJewels(jewelId);
+            if (!IsPostBack)
+            {
+                LoadJewels(jewelId);
                 LoadBrands();
                 LoadCategory();
-			}
+            }
 
-		}
+        }
         private void LoadBrands()
         {
             var brands = JewelsRepository.GetBrands();
@@ -61,7 +61,7 @@ namespace JawelsDiamond.Views.Admin
         {
             int jewelId = Convert.ToInt32(Request.QueryString["id"]);
             string jewelName = JewelName.Text;
-            int brandId = Convert.ToInt32(JewelBrand.SelectedValue); 
+            int brandId = Convert.ToInt32(JewelBrand.SelectedValue);
             int categoryId = Convert.ToInt32(JewelCategory.SelectedValue);
             string price = JewelPrice.Text;
             string releaseYear = JewelReleaseYear.Text;

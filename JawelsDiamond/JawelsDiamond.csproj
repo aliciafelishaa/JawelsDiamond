@@ -89,6 +89,7 @@
     </Content>
     <Content Include="Views\Admin\AddJewels.aspx" />
     <Content Include="Views\Admin\EditJewels.aspx" />
+    <Content Include="Views\Admin\HandleOrder.aspx" />
     <Content Include="Views\Customer\CartPage.aspx" />
     <Content Include="Views\Customer\UpdateJewelQuantityPage.aspx" />
     <Content Include="Views\Guest\LoginPages.aspx" />
@@ -151,6 +152,7 @@
     <Compile Include="Repository\CartRepository.cs" />
     <Compile Include="Repository\DatabaseSingleton.cs" />
     <Compile Include="Repository\JewelsRepository.cs" />
+    <Compile Include="Repository\TransactionRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Views\Admin\AddJewels.aspx.cs">
       <DependentUpon>AddJewels.aspx</DependentUpon>
@@ -165,6 +167,13 @@
     </Compile>
     <Compile Include="Views\Admin\EditJewels.aspx.designer.cs">
       <DependentUpon>EditJewels.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Admin\HandleOrder.aspx.cs">
+      <DependentUpon>HandleOrder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\Admin\HandleOrder.aspx.designer.cs">
+      <DependentUpon>HandleOrder.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\Customer\CartPage.aspx.cs">
       <DependentUpon>CartPage.aspx</DependentUpon>
