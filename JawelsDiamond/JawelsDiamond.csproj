@@ -1243,6 +1243,9 @@
       <DependentUpon>CrystalReports.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Dataset\TransactionDataset.cs">
+      <DependentUpon>TransactionDataset.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Dataset\TransactionDataset.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

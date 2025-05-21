@@ -29,8 +29,8 @@
               <xs:element name="TransactionID" msprop:Generator_ColumnPropNameInTable="TransactionIDColumn" msprop:Generator_ColumnPropNameInRow="TransactionID" msprop:Generator_UserColumnName="TransactionID" msprop:Generator_ColumnVarNameInTable="columnTransactionID" type="xs:string" minOccurs="0" />
               <xs:element name="Quantity" msprop:Generator_ColumnPropNameInTable="QuantityColumn" msprop:Generator_ColumnPropNameInRow="Quantity" msprop:Generator_UserColumnName="Quantity" msprop:Generator_ColumnVarNameInTable="columnQuantity" type="xs:string" minOccurs="0" />
               <xs:element name="JewelID" msprop:Generator_ColumnPropNameInTable="JewelIDColumn" msprop:Generator_ColumnPropNameInRow="JewelID" msprop:Generator_UserColumnName="JewelID" msprop:Generator_ColumnVarNameInTable="columnJewelID" type="xs:string" minOccurs="0" />
-              <xs:element name="Price" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_ColumnVarNameInTable="columnPrice" msprop:Generator_UserColumnName="Price" type="xs:string" minOccurs="0" />
-              <xs:element name="Subtotal" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" msprop:Generator_ColumnVarNameInTable="columnSubtotal" msprop:Generator_UserColumnName="Subtotal" type="xs:string" minOccurs="0" />
+              <xs:element name="Price" msprop:Generator_UserColumnName="Price" msprop:Generator_ColumnPropNameInTable="PriceColumn" msprop:Generator_ColumnPropNameInRow="Price" msprop:Generator_ColumnVarNameInTable="columnPrice" type="xs:int" minOccurs="0" />
+              <xs:element name="Subtotal" msprop:Generator_UserColumnName="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnVarNameInTable="columnSubtotal" type="xs:int" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -51,8 +51,8 @@
   </xs:element>
   <xs:annotation>
     <xs:appinfo>
-      <msdata:Relationship name="TransactionHeader_TransactionDetail" msdata:parent="TransactionHeader" msdata:child="TransactionDetail" msdata:parentkey="TransactionID" msdata:childkey="TransactionID" msprop:Generator_UserParentTable="TransactionHeader" msprop:Generator_UserChildTable="TransactionDetail" msprop:Generator_RelationVarName="relationTransactionHeader_TransactionDetail" msprop:Generator_ChildPropName="GetTransactionDetailRows" msprop:Generator_UserRelationName="TransactionHeader_TransactionDetail" msprop:Generator_ParentPropName="TransactionHeaderRow" />
-      <msdata:Relationship name="TransactionDetail_MsJewel" msdata:parent="TransactionDetail" msdata:child="MsJewel" msdata:parentkey="JewelID" msdata:childkey="JewelID" msprop:Generator_UserParentTable="TransactionDetail" msprop:Generator_UserChildTable="MsJewel" msprop:Generator_RelationVarName="relationTransactionDetail_MsJewel" msprop:Generator_ChildPropName="GetMsJewelRows" msprop:Generator_UserRelationName="TransactionDetail_MsJewel" msprop:Generator_ParentPropName="TransactionDetailRow" />
+      <msdata:Relationship name="TransactionHeader_TransactionDetail" msdata:parent="TransactionHeader" msdata:child="TransactionDetail" msdata:parentkey="TransactionID" msdata:childkey="TransactionID" msprop:Generator_UserParentTable="TransactionHeader" msprop:Generator_UserChildTable="TransactionDetail" msprop:Generator_RelationVarName="relationTransactionHeader_TransactionDetail" msprop:Generator_ChildPropName="GetTransactionDetailRows" msprop:Generator_ParentPropName="TransactionHeaderRow" msprop:Generator_UserRelationName="TransactionHeader_TransactionDetail" />
+      <msdata:Relationship name="TransactionDetail_MsJewel" msdata:parent="TransactionDetail" msdata:child="MsJewel" msdata:parentkey="JewelID" msdata:childkey="JewelID" msprop:Generator_UserParentTable="TransactionDetail" msprop:Generator_UserChildTable="MsJewel" msprop:Generator_RelationVarName="relationTransactionDetail_MsJewel" msprop:Generator_ChildPropName="GetMsJewelRows" msprop:Generator_ParentPropName="TransactionDetailRow" msprop:Generator_UserRelationName="TransactionDetail_MsJewel" />
     </xs:appinfo>
   </xs:annotation>
 </xs:schema>

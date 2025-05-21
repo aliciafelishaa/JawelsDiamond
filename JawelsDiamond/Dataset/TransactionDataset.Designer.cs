@@ -786,7 +786,7 @@ namespace JawelsDiamond.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public TransactionDetailRow AddTransactionDetailRow(TransactionHeaderRow parentTransactionHeaderRowByTransactionHeader_TransactionDetail, string Quantity, string JewelID, string Price, string Subtotal) {
+            public TransactionDetailRow AddTransactionDetailRow(TransactionHeaderRow parentTransactionHeaderRowByTransactionHeader_TransactionDetail, string Quantity, string JewelID, int Price, int Subtotal) {
                 TransactionDetailRow rowTransactionDetailRow = ((TransactionDetailRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -835,9 +835,9 @@ namespace JawelsDiamond.Dataset {
                 base.Columns.Add(this.columnQuantity);
                 this.columnJewelID = new global::System.Data.DataColumn("JewelID", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnJewelID);
-                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnPrice = new global::System.Data.DataColumn("Price", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPrice);
-                this.columnSubtotal = new global::System.Data.DataColumn("Subtotal", typeof(string), null, global::System.Data.MappingType.Element);
+                this.columnSubtotal = new global::System.Data.DataColumn("Subtotal", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnSubtotal);
             }
             
@@ -1515,10 +1515,10 @@ namespace JawelsDiamond.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Price {
+            public int Price {
                 get {
                     try {
-                        return ((string)(this[this.tableTransactionDetail.PriceColumn]));
+                        return ((int)(this[this.tableTransactionDetail.PriceColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Price\' in table \'TransactionDetail\' is DBNull.", e);
@@ -1531,10 +1531,10 @@ namespace JawelsDiamond.Dataset {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public string Subtotal {
+            public int Subtotal {
                 get {
                     try {
-                        return ((string)(this[this.tableTransactionDetail.SubtotalColumn]));
+                        return ((int)(this[this.tableTransactionDetail.SubtotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Subtotal\' in table \'TransactionDetail\' is DBNull.", e);
