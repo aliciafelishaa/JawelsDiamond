@@ -10,41 +10,39 @@ namespace JawelsDiamond.Repository
     {
         private static Database1Entities db = new Database1Entities();
 
+        // Fungsi milik temen kamu
         public static List<TransactionHeader> GetUnfinishedTransaction()
+        {
+            return db.TransactionHeaders
+                .Where(x => x.TransactionStatus == "Payment Pending"
+                         || x.TransactionStatus == "Shipment Pending"
+                         || x.TransactionStatus == "Arrived")
+                .ToList();
+        }
+
+        public static List<TransactionHeader> GetFinishedTransaction()
+        {
+            return db.TransactionHeaders
+                .Where(x => x.TransactionStatus == "Done")
+                .ToList();
+        }
+
+        // Fungsi milik kamu
         public static List<TransactionHeader> GetUserTransactions(int userId)
         {
-            var unfinishedTransactions = (from x in db.TransactionHeaders
-                                          where (x.TransactionStatus == "Payment Pending"
-                                                    || x.TransactionStatus == "Shipment Pending"
-                                                    || x.TransactionStatus == "Arrived")
-                                          select x).ToList();
-
-
-            return unfinishedTransactions;
             return db.TransactionHeaders
                      .Where(t => t.UserID == userId)
                      .ToList();
         }
 
         public static void UpdateTransactionStatus(int transactionId, string newStatus)
-        public static void UpdateTransactionStatus(int transactionId, string status)
         {
-            TransactionHeader oldTransaction = db.TransactionHeaders.Find(transactionId);
-            if (oldTransaction != null)
-            var transaction = db.TransactionHeaders.FirstOrDefault(t => t.TransactionID == transactionId);
+            var transaction = db.TransactionHeaders.Find(transactionId);
             if (transaction != null)
             {
-                oldTransaction.TransactionStatus = newStatus;
-                transaction.TransactionStatus = status;
+                transaction.TransactionStatus = newStatus;
                 db.SaveChanges();
             }
-        }
-
-        public static List<TransactionHeader> GetFinishedTransaction()
-        {
-            var finishedTransactions = (from x in db.TransactionHeaders where x.TransactionStatus == "Done" select x).ToList();
-
-            return finishedTransactions;
         }
     }
 }
