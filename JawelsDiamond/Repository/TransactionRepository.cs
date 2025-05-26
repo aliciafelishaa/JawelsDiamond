@@ -10,24 +10,25 @@ namespace JawelsDiamond.Repository
     {
         private static Database1Entities db = new Database1Entities();
 
-        // Fungsi milik temen kamu
         public static List<TransactionHeader> GetUnfinishedTransaction()
         {
-            return db.TransactionHeaders
-                .Where(x => x.TransactionStatus == "Payment Pending"
-                         || x.TransactionStatus == "Shipment Pending"
-                         || x.TransactionStatus == "Arrived")
-                .ToList();
+            var unfinishedTransactions = (from x in db.TransactionHeaders
+                                          where (x.TransactionStatus == "Payment Pending"
+                                                    || x.TransactionStatus == "Shipment Pending"
+                                                    || x.TransactionStatus == "Arrived")
+                                          select x).ToList();
+
+
+            return unfinishedTransactions;
         }
 
         public static List<TransactionHeader> GetFinishedTransaction()
         {
-            return db.TransactionHeaders
-                .Where(x => x.TransactionStatus == "Done")
-                .ToList();
+            var finishedTransactions = (from x in db.TransactionHeaders where x.TransactionStatus == "Done" select x).ToList();
+
+            return finishedTransactions;
         }
 
-        // Fungsi milik kamu
         public static List<TransactionHeader> GetUserTransactions(int userId)
         {
             return db.TransactionHeaders
@@ -37,10 +38,10 @@ namespace JawelsDiamond.Repository
 
         public static void UpdateTransactionStatus(int transactionId, string newStatus)
         {
-            var transaction = db.TransactionHeaders.Find(transactionId);
-            if (transaction != null)
+            TransactionHeader oldTransaction = db.TransactionHeaders.Find(transactionId);
+            if (oldTransaction != null)
             {
-                transaction.TransactionStatus = newStatus;
+                oldTransaction.TransactionStatus = newStatus;
                 db.SaveChanges();
             }
         }
