@@ -22,6 +22,20 @@ namespace JawelsDiamond.Repository
             return unfinishedTransactions;
         }
 
+        public static List<TransactionHeader> GetFinishedTransaction()
+        {
+            var finishedTransactions = (from x in db.TransactionHeaders where x.TransactionStatus == "Done" select x).ToList();
+
+            return finishedTransactions;
+        }
+
+        public static List<TransactionHeader> GetUserTransactions(int userId)
+        {
+            return db.TransactionHeaders
+                     .Where(t => t.UserID == userId)
+                     .ToList();
+        }
+
         public static void UpdateTransactionStatus(int transactionId, string newStatus)
         {
             TransactionHeader oldTransaction = db.TransactionHeaders.Find(transactionId);
@@ -30,13 +44,6 @@ namespace JawelsDiamond.Repository
                 oldTransaction.TransactionStatus = newStatus;
                 db.SaveChanges();
             }
-        }
-
-        public static List<TransactionHeader> GetFinishedTransaction()
-        {
-            var finishedTransactions = (from x in db.TransactionHeaders where x.TransactionStatus == "Done" select x).ToList();
-
-            return finishedTransactions;
         }
     }
 }
