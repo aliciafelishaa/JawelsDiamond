@@ -87,10 +87,10 @@
                            <asp:HyperLink ID="Btn_goToCart" runat="server" NavigateUrl="#" CssClass="nav-link">Cart</asp:HyperLink>
                         </li>
                         <li class="nav-item">
-                          <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Views/MyOrder.aspx" CssClass="nav-link">My Orders</asp:HyperLink>
+                          <asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/Views/Customer/MyOrder.aspx" CssClass="nav-link">My Orders</asp:HyperLink>
                         </li>
                           <li class="nav-item">
-                          <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Views/ProfilePage.aspx" CssClass="nav-link">Profile</asp:HyperLink>
+                          <asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/Views/Customer/ProfilePage.aspx" CssClass="nav-link">Profile</asp:HyperLink>
                         </li>
                       </ul>
                         <div style="gap:30px">

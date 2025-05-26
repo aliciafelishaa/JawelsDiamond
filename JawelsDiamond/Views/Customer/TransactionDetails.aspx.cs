@@ -53,14 +53,14 @@ namespace JawelsDiamond.Views
                 }
                 else
                 {
-                    Response.Redirect("~/Views/MyOrder.aspx");
+                    Response.Redirect("~/Views/Customer/MyOrder.aspx");
                 }
             }
         }
 
         protected void btnBack_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/MyOrder.aspx");
+            Response.Redirect("~/Views/Customer/MyOrder.aspx");
         }
     }
 }
