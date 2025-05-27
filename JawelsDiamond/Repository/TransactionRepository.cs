@@ -8,8 +8,8 @@ namespace JawelsDiamond.Repository
 {
     public class TransactionRepository
     {
-        private static Database1Entities db = new Database1Entities();
-
+        //private static Database1Entities db = new Database1Entities();
+        private static Database1Entities db = DatabaseSingleton.getInstance();
         public static List<TransactionHeader> GetUnfinishedTransaction()
         {
             var unfinishedTransactions = (from x in db.TransactionHeaders

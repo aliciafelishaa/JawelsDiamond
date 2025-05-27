@@ -57,32 +57,35 @@ namespace JawelsDiamond.Views.Admin
             JewelReleaseYear.Text = jewels.JewelReleaseYear.ToString();
         }
 
-        protected void SaveBtn_Click(object sender, EventArgs e)
-        {
-            int jewelId = Convert.ToInt32(Request.QueryString["id"]);
-            string jewelName = JewelName.Text;
-            int brandId = Convert.ToInt32(JewelBrand.SelectedValue);
-            int categoryId = Convert.ToInt32(JewelCategory.SelectedValue);
-            string price = JewelPrice.Text;
-            string releaseYear = JewelReleaseYear.Text;
-
-            string error = UpdateItem.checkItem(jewelName, brandId.ToString(), categoryId.ToString(), price, releaseYear);
-            errorMsg.Text = error;
-
-            var jewels = JewelsRepository.findJewel(jewelId);
-            jewels.JewelName = jewelName;
-            jewels.MsBrand.BrandName = brandId.ToString();
-            jewels.MsCategory.CategoryName = categoryId.ToString();
-            jewels.JewelPrice = Convert.ToInt32(price.ToLower());
-            jewels.JewelReleaseYear = Convert.ToInt32(releaseYear.ToLower());
-
-            JewelsRepository.EditJewel(jewelId);
-            Response.Redirect("~/Views/JewelDetail.aspx");
-        }
-
         protected void CancelBtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("~/Views/Admin/EditJewels.aspx");
+        }
+
+        protected void Edit_Click(object sender, EventArgs e)
+        {
+            int jewelId = Convert.ToInt32(Request.QueryString["id"]);
+            string jewelName = JewelName.Text;
+            string brand = JewelBrand.SelectedValue;
+            string category = JewelCategory.SelectedValue;
+            string price = JewelPrice.Text;
+            string releaseYear = JewelReleaseYear.Text;
+
+            string error = UpdateItem.checkItem(jewelName, brand, category, price, releaseYear);
+            errorMsg.Text = error;
+
+            if (string.IsNullOrEmpty(error))
+            {
+                var jewels = JewelsRepository.findJewel(jewelId);
+                jewels.JewelName = jewelName;
+                jewels.MsBrand.BrandName = brand;
+                jewels.MsCategory.CategoryName = category;
+                jewels.JewelPrice = Convert.ToInt32(price);
+                jewels.JewelReleaseYear = Convert.ToInt32(releaseYear);
+
+                JewelsRepository.EditJewel(jewels);
+                Response.Redirect("~/Views/JewelDetail.aspx");
+            }
         }
     }
 }

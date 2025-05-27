@@ -82,7 +82,7 @@ namespace JawelsDiamond.Views.Customer
                 {
                     total += Convert.ToDecimal(row["Subtotal"]);
                 }
-                Lbl_TotalPriceValue.Text = $"${total:0.00}";
+                Lbl_TotalPriceValue.Text = $"Rp{total:0.00}";
         }
 
         protected void CartGrid_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -114,7 +114,6 @@ namespace JawelsDiamond.Views.Customer
         protected void CartGrid_RowEditing(object sender, GridViewEditEventArgs e)
         {
             e.Cancel = true; // Cancel default edit mode behavior
-
             int jewelId = Convert.ToInt32(CartGrid.DataKeys[e.NewEditIndex].Value);
 
             MsUser currentUser = (MsUser)Session["user"];
@@ -138,6 +137,20 @@ namespace JawelsDiamond.Views.Customer
 
         }
 
-        
+        protected void Btn_ClearCart_Click(object sender, EventArgs e)
+        {
+            if(Session["user"] != null)
+            {
+                MsUser currentUser = (MsUser)Session["user"];
+                int userId = currentUser.UserID;
+
+                CartRepository.ClearCart(userId);
+                LoadCart();
+            }
+            else
+            {
+                Response.Redirect("~/Views/Guest/LoginPages.aspx");
+            }
+        }
     }
 }

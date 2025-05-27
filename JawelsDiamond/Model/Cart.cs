@@ -18,7 +18,7 @@ namespace JawelsDiamond.Model
         public int JewelID { get; set; }
         public int Quantity { get; set; }
     
-        public virtual MsUser MsUser { get; set; }
         public virtual MsJewel MsJewel { get; set; }
+        public virtual MsUser MsUser { get; set; }
     }
 }

@@ -128,7 +128,7 @@
 
             <br />
 
-            <asp:Button ID="Btn_ClearCart" runat="server" Text="Clear Cart" CssClass="btn btn-outline-danger w-100" />
+            <asp:Button ID="Btn_ClearCart" runat="server" Text="Clear Cart" CssClass="btn btn-outline-danger w-100" OnClick="Btn_ClearCart_Click"/>
             <br /><br />
             <asp:Button ID="Btn_Checkout" runat="server" Text="Checkout" CssClass="btn btn-success w-100" />
         </div>

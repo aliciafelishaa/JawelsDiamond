@@ -59,7 +59,7 @@ namespace JawelsDiamond.Views
 				lblJewelBrand.Text = jewels.MsBrand.BrandName;
 				lblCountryOrigin.Text = jewels.MsBrand.BrandCountry;
 				lblClass.Text = jewels.MsBrand.BrandClass;
-				lblPrice.Text = "$" + jewels.JewelPrice.ToString();
+				lblPrice.Text = "Rp" + jewels.JewelPrice.ToString();
 				lblReleaseYear.Text = jewels.JewelReleaseYear.ToString();
 
 				string role = Session["role"] as string;

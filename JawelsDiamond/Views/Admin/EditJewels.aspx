@@ -64,7 +64,7 @@
          
          <%-- Submit --%>
          <div>
-         <asp:Button ID="Button2" runat="server" Text="Save Changes" OnClick="SaveBtn_Click"/>
+         <asp:Button ID="Button2" runat="server" Text="Save Changes" OnClick="Edit_Click"/>
          <asp:Button ID="Button3" runat="server" Text="Cancel" OnClick="CancelBtn_Click"/>
          </div>
 

@@ -9,7 +9,8 @@ namespace JawelsDiamond.Repository
 {
     public class UserRepository
     {
-        private static Database1Entities db = new Database1Entities();
+        //private static Database1Entities db = new Database1Entities();
+        private static Database1Entities db = DatabaseSingleton.getInstance();
         public static String CreateNewUser(String email, String username, String password, String Gender, DateTime DOB, String role)
         {
             MsUser newUser = UserFactory.CreateNewUser(email, username, password, Gender, DOB, role);
