@@ -121,16 +121,18 @@
             <asp:Label ID="Lbl_PaymentMethod" runat="server" Text="Payment Method:" AssociatedControlID="PaymentDropdown"></asp:Label><br />
             <asp:DropDownList ID="PaymentDropdown" runat="server" CssClass="form-control">
                 <asp:ListItem Text="-- Select Payment Method --" Value="" />
-                <asp:ListItem Text="Credit Card" Value="credit" />
-                <asp:ListItem Text="PayPal" Value="paypal" />
-                <asp:ListItem Text="Bank Transfer" Value="bank" />
+                <asp:ListItem Text="Credit Card" Value="Credit" />
+                <asp:ListItem Text="PayPal" Value="Paypal" />
+                <asp:ListItem Text="Bank Transfer" Value="Bank" />
+                <asp:ListItem Text="Cash" Value="Cash" />
+                <asp:ListItem Text="Master Card" Value="MasterCard" />
             </asp:DropDownList>
 
             <br />
 
             <asp:Button ID="Btn_ClearCart" runat="server" Text="Clear Cart" CssClass="btn btn-outline-danger w-100" OnClick="Btn_ClearCart_Click"/>
             <br /><br />
-            <asp:Button ID="Btn_Checkout" runat="server" Text="Checkout" CssClass="btn btn-success w-100" />
+            <asp:Button ID="Btn_Checkout" runat="server" Text="Checkout" CssClass="btn btn-success w-100" OnClick="Btn_Checkout_Click"/>
         </div>
     </div>
     </div>

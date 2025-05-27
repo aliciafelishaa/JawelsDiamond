@@ -74,8 +74,8 @@ namespace JawelsDiamond.Views.Admin
             string error = UpdateItem.checkItem(jewelName, brand, category, price, releaseYear);
             errorMsg.Text = error;
 
-            if (string.IsNullOrEmpty(error))
-            {
+           
+                Console.WriteLine("test");
                 var jewels = JewelsRepository.findJewel(jewelId);
                 jewels.JewelName = jewelName;
                 jewels.MsBrand.BrandName = brand;
@@ -85,7 +85,7 @@ namespace JawelsDiamond.Views.Admin
 
                 JewelsRepository.EditJewel(jewels);
                 Response.Redirect("~/Views/JewelDetail.aspx");
-            }
+            
         }
     }
 }

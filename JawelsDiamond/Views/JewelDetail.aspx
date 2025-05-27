@@ -50,7 +50,6 @@
             margin-top: 30px;
         }
 
-        /* Style umum untuk semua tombol di dalam button-container */
         .button-container input[type="submit"], 
         .button-container input[type="button"], 
         .button-container button {
@@ -66,13 +65,11 @@
             outline: none;
         }
 
-        /* Edit button: biru muda */
         .button-container #btnEdit {
             background-color: #2196f3;
             color: #f9f9f9;
         }
 
-        /* Delete button: merah */
         .button-container #btnDelet {
             background-color: #e53935;
             color: red;

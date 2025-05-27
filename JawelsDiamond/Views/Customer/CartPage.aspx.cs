@@ -152,5 +152,50 @@ namespace JawelsDiamond.Views.Customer
                 Response.Redirect("~/Views/Guest/LoginPages.aspx");
             }
         }
+
+        protected void Btn_Checkout_Click(object sender, EventArgs e)
+        {
+            if (Session["user"] == null)
+            {
+                Response.Redirect("~/Views/Guest/LoginPages.aspx");
+                return;
+            }
+
+            MsUser currentUser = (MsUser)Session["user"];
+            int userId = currentUser.UserID;
+            List<Cart> cartItems = CartRepository.GetCartItems(userId);
+
+            if (cartItems == null || cartItems.Count == 0)
+            {
+                Response.Write("<script>alert('Cart is empty. Cannot proceed to checkout.');</script>");
+                return;
+            }
+
+            TransactionHeader header = new TransactionHeader
+            {
+                UserID = userId,
+                TransactionDate = DateTime.Now,
+                PaymentMethod = PaymentDropdown.SelectedValue,
+                TransactionStatus = "Payment Pending"
+            };
+
+            int headerId = TransactionRepository.InsertTransactionHeader(header);
+
+            foreach (Cart item in cartItems)
+            {
+                TransactionDetail detail = new TransactionDetail
+                {
+                    TransactionID = headerId,
+                    JewelID = item.JewelID,
+                    Quantity = item.Quantity
+                };
+
+                TransactionRepository.InsertTransactionDetail(detail);
+            }
+
+            CartRepository.ClearCart(userId);
+            LoadCart();
+
+        }
     }
 }

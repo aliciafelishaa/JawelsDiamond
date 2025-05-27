@@ -45,5 +45,24 @@ namespace JawelsDiamond.Repository
                 db.SaveChanges();
             }
         }
+
+        public static int InsertTransactionHeader(TransactionHeader header)
+        {
+            using (Database1Entities db = new Database1Entities())
+            {
+                db.TransactionHeaders.Add(header);
+                db.SaveChanges();
+                return header.TransactionID;
+            }
+        }
+
+        public static void InsertTransactionDetail(TransactionDetail detail)
+        {
+            using (Database1Entities db = new Database1Entities())
+            {
+                db.TransactionDetails.Add(detail);
+                db.SaveChanges();
+            }
+        }
     }
 }

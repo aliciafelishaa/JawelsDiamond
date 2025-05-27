@@ -35,13 +35,10 @@ namespace JawelsDiamond.Repository
 
         public static MsJewel findJewel(int id)
         {
-
-            //return db.MsJewels.FirstOrDefault(j => j.JewelID == id);
             using (var db = new Database1Entities())
             {
                 return db.MsJewels.Include(j => j.MsCategory).Include(j => j.MsBrand).FirstOrDefault(j => j.JewelID == id);
             }
-            //return (from jwl_id in db.MsJewels where jwl_id.JewelID == id select jwl_id).FirstOrDefault();
         }
 
         public static void DeleteJewel(int jewelId)

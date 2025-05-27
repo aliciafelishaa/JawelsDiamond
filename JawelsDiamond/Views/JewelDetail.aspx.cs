@@ -26,15 +26,9 @@ namespace JawelsDiamond.Views
                 if (jewelId > 0)
                 {
                     LoadJewels(jewelId);
+                    
                 }
             }
-            if (!IsPostBack)
-			{	
-				if (jewelId > 0)
-				{
-					LoadJewels(jewelId);
-				}
-			}
 
             if (Session["user"] == null && Request.Cookies["user_cookie"] != null)
             {
@@ -82,6 +76,7 @@ namespace JawelsDiamond.Views
 			}
 
         }
+
 
 		protected void btnEdit_Click(object sender, EventArgs e)
         {
