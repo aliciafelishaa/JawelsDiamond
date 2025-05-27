@@ -48,8 +48,7 @@ namespace JawelsDiamond.Handler
             }
 
             var jewel = JewelFactory.createJewel(jName, brandId, categoryId, price, releaseYear);
-            return "Success Add Items!";
-
+            return "Success Edit Items!";
         }
     }
 }

@@ -82,7 +82,7 @@ namespace JawelsDiamond.Views.Customer
                 {
                     total += Convert.ToDecimal(row["Subtotal"]);
                 }
-                Lbl_TotalPriceValue.Text = $"${total:0.00}";
+                Lbl_TotalPriceValue.Text = $"Rp{total:0.00}";
         }
 
         protected void CartGrid_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -114,7 +114,6 @@ namespace JawelsDiamond.Views.Customer
         protected void CartGrid_RowEditing(object sender, GridViewEditEventArgs e)
         {
             e.Cancel = true; // Cancel default edit mode behavior
-
             int jewelId = Convert.ToInt32(CartGrid.DataKeys[e.NewEditIndex].Value);
 
             MsUser currentUser = (MsUser)Session["user"];
@@ -138,6 +137,65 @@ namespace JawelsDiamond.Views.Customer
 
         }
 
-        
+        protected void Btn_ClearCart_Click(object sender, EventArgs e)
+        {
+            if(Session["user"] != null)
+            {
+                MsUser currentUser = (MsUser)Session["user"];
+                int userId = currentUser.UserID;
+
+                CartRepository.ClearCart(userId);
+                LoadCart();
+            }
+            else
+            {
+                Response.Redirect("~/Views/Guest/LoginPages.aspx");
+            }
+        }
+
+        protected void Btn_Checkout_Click(object sender, EventArgs e)
+        {
+            if (Session["user"] == null)
+            {
+                Response.Redirect("~/Views/Guest/LoginPages.aspx");
+                return;
+            }
+
+            MsUser currentUser = (MsUser)Session["user"];
+            int userId = currentUser.UserID;
+            List<Cart> cartItems = CartRepository.GetCartItems(userId);
+
+            if (cartItems == null || cartItems.Count == 0)
+            {
+                Response.Write("<script>alert('Cart is empty. Cannot proceed to checkout.');</script>");
+                return;
+            }
+
+            TransactionHeader header = new TransactionHeader
+            {
+                UserID = userId,
+                TransactionDate = DateTime.Now,
+                PaymentMethod = PaymentDropdown.SelectedValue,
+                TransactionStatus = "Payment Pending"
+            };
+
+            int headerId = TransactionRepository.InsertTransactionHeader(header);
+
+            foreach (Cart item in cartItems)
+            {
+                TransactionDetail detail = new TransactionDetail
+                {
+                    TransactionID = headerId,
+                    JewelID = item.JewelID,
+                    Quantity = item.Quantity
+                };
+
+                TransactionRepository.InsertTransactionDetail(detail);
+            }
+
+            CartRepository.ClearCart(userId);
+            LoadCart();
+
+        }
     }
 }

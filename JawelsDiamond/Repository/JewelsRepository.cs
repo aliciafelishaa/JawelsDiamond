@@ -9,7 +9,8 @@ namespace JawelsDiamond.Repository
 {
 	public class JewelsRepository
 	{
-		private static Database1Entities db = new Database1Entities();
+		//private static Database1Entities db = new Database1Entities();
+        private static Database1Entities db = DatabaseSingleton.getInstance();
 
         public static List<MsBrand> GetBrands()
         {
@@ -34,13 +35,10 @@ namespace JawelsDiamond.Repository
 
         public static MsJewel findJewel(int id)
         {
-
-            //return db.MsJewels.FirstOrDefault(j => j.JewelID == id);
             using (var db = new Database1Entities())
             {
                 return db.MsJewels.Include(j => j.MsCategory).Include(j => j.MsBrand).FirstOrDefault(j => j.JewelID == id);
             }
-            //return (from jwl_id in db.MsJewels where jwl_id.JewelID == id select jwl_id).FirstOrDefault();
         }
 
         public static void DeleteJewel(int jewelId)
@@ -59,13 +57,18 @@ namespace JawelsDiamond.Repository
             }
 
         }
-        public static void EditJewel(int jewelId)
-        {  
-            var jewel = db.MsJewels.Find(jewelId);
-            if (jewel != null)
+        public static void EditJewel(MsJewel updatedJewel)
+        {
+            var existingJewel = db.MsJewels.Find(updatedJewel.JewelID);
+            if (existingJewel != null)
             {
+                existingJewel.JewelName = updatedJewel.JewelName;
+                existingJewel.MsBrand.BrandName = updatedJewel.MsBrand.BrandName;
+                existingJewel.MsCategory.CategoryName = updatedJewel.MsCategory.CategoryName;
+                existingJewel.JewelPrice = updatedJewel.JewelPrice;
+                existingJewel.JewelReleaseYear = updatedJewel.JewelReleaseYear;
+
                 db.SaveChanges();
-                
             }
         }
 

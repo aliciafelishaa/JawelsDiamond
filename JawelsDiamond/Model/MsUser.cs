@@ -17,6 +17,7 @@ namespace JawelsDiamond.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public MsUser()
         {
+            this.Carts = new HashSet<Cart>();
             this.TransactionHeaders = new HashSet<TransactionHeader>();
         }
     
@@ -28,7 +29,8 @@ namespace JawelsDiamond.Model
         public string UserGender { get; set; }
         public string UserRole { get; set; }
     
-        public virtual Cart Cart { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TransactionHeader> TransactionHeaders { get; set; }
     }

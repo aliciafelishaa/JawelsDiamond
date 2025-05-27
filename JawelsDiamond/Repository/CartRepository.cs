@@ -9,7 +9,7 @@ namespace JawelsDiamond.Repository
     public class CartRepository
     {
         //private static Database1Entities db = DatabaseSingleton.getInstance();
-        private static Database1Entities db = new Database1Entities();
+        
         public static List<Cart> GetCartItems(int userId)
         {
             using (var db = new Database1Entities())
@@ -29,7 +29,7 @@ namespace JawelsDiamond.Repository
         }
         public static void AddToCart(int userId, int jewelId, int quantity)
         {
-            using (Database1Entities db = new Database1Entities())
+            using (var db = new Database1Entities())
             {
                 Cart cartItem = db.Carts.FirstOrDefault(c => c.UserID == userId && c.JewelID == jewelId);
                     
@@ -56,7 +56,7 @@ namespace JawelsDiamond.Repository
 
         public static void DeleteCartItem(int userId, int jewelId)
         {
-            using (Database1Entities db = new Database1Entities())
+            using (var db = new Database1Entities())
             {
                 // Fetch the cart item based on both userId and jewelId
                 Cart cartItem = db.Carts
@@ -76,7 +76,7 @@ namespace JawelsDiamond.Repository
 
         public static void UpdateCart(int userId, int jewelId, int quantity)
         {
-            using (Database1Entities db = new Database1Entities())
+            using (var db = new Database1Entities())
             {
                 Cart cartItem = db.Carts.FirstOrDefault(c => c.UserID == userId && c.JewelID == jewelId);
 
@@ -87,9 +87,19 @@ namespace JawelsDiamond.Repository
                 }
             }
         }
-        //public static Cart FindCart(int id)
-        //{
-        //    return (from c in db.Carts where c.CartID == id select c).FirstOrDefault();
-        //}
+
+        public static void ClearCart(int userId)
+        {
+            using (var db = new Database1Entities())
+            {
+                List<Cart> cartItems = db.Carts.Where(c => c.UserID == userId).ToList();
+
+                if (cartItems.Any())
+                {
+                    db.Carts.RemoveRange(cartItems);
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

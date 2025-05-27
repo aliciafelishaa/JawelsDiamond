@@ -33,16 +33,19 @@ namespace JawelsDiamond
             else if (password != confirmpass)
             {
                 Lbl_Status.Text = "Password doesnt match.";
+                Lbl_Status.ForeColor = System.Drawing.Color.Red;
                 return;
             }
             else if (email.IndexOf("@") == -1 || email.IndexOf("@") == 0 || email.IndexOf("@") == email.Length - 1 || email.IndexOf(".") == -1 || email.IndexOf(".") == 0 || email.IndexOf(".") == email.Length - 1)
             {
                 Lbl_Status.Text = "Email must contain @ in the right place.";
+                Lbl_Status.ForeColor = System.Drawing.Color.Red;
                 return;
             }
             else if (selectedDOB >= cutoffDate)
             {
                 Lbl_Status.Text = "Date must be earlier than 01/01/2010.";
+                Lbl_Status.ForeColor = System.Drawing.Color.Red;
                 return;
             }
             String role = "customer";

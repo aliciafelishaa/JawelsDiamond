@@ -26,15 +26,9 @@ namespace JawelsDiamond.Views
                 if (jewelId > 0)
                 {
                     LoadJewels(jewelId);
+                    
                 }
             }
-            if (!IsPostBack)
-			{	
-				if (jewelId > 0)
-				{
-					LoadJewels(jewelId);
-				}
-			}
 
             if (Session["user"] == null && Request.Cookies["user_cookie"] != null)
             {
@@ -59,7 +53,7 @@ namespace JawelsDiamond.Views
 				lblJewelBrand.Text = jewels.MsBrand.BrandName;
 				lblCountryOrigin.Text = jewels.MsBrand.BrandCountry;
 				lblClass.Text = jewels.MsBrand.BrandClass;
-				lblPrice.Text = "$" + jewels.JewelPrice.ToString();
+				lblPrice.Text = "Rp" + jewels.JewelPrice.ToString();
 				lblReleaseYear.Text = jewels.JewelReleaseYear.ToString();
 
 				string role = Session["role"] as string;
@@ -82,6 +76,7 @@ namespace JawelsDiamond.Views
 			}
 
         }
+
 
 		protected void btnEdit_Click(object sender, EventArgs e)
         {

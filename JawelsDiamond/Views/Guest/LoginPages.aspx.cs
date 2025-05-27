@@ -49,6 +49,7 @@ namespace JawelsDiamond.Views
             if (email == null || password == null)
             {
                 Lbl_Status.Text = "All fields must be filled.";
+                Lbl_Status.ForeColor = System.Drawing.Color.Red;
                 return;
             }
 
@@ -56,6 +57,7 @@ namespace JawelsDiamond.Views
             if (loginUser == null)
             {
                 Lbl_Status.Text = "Incorrect email or password";
+                Lbl_Status.ForeColor = System.Drawing.Color.Red;
                 return;
             }
             else
