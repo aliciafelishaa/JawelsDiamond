@@ -43,6 +43,13 @@ namespace JawelsDiamond.Views
             if (currentUser.UserPassword != oldPassword)
             {
                 lblErrorMessage.Text = "Old password is incorrect.";
+              
+                return;
+            }
+
+            if(newPassword.Length <= 8 || newPassword.Length >= 25)
+            {
+                lblErrorMessage.Text = "Password must be between 8 to 25 characters and alphanumeric";
                 return;
             }
 

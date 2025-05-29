@@ -118,13 +118,13 @@
 
         <%--Add cart for Customer--%>
         <asp:Panel ID="addToCartBtn" runat="server" CssClass="button-container" Style="display:none;">
-            <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" OnClick="btnAddToCart_Click" />
-        </asp:Panel>
+    <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" CssClass="btn btn-primary" OnClick="btnAddToCart_Click" />
+</asp:Panel>
 
         <%-- Edit and Delete buttons for Admins --%>
         <asp:Panel ID="adminButtons" runat="server" CssClass="button-container" Style="display:none;">
-            <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" />
-            <asp:Button ID="btnDelet" runat="server" Text="Delete" OnClick="btnDelete_Click" />
+            <asp:Button ID="btnEdit" runat="server" Text="Edit" CssClass="btn btn-primary" OnClick="btnEdit_Click" />
+            <asp:Button ID="btnDelet" runat="server" Text="Delete" CssClass="btn btn-danger"  OnClick="btnDelete_Click" />
         </asp:Panel>
     </div>
 </asp:Content>

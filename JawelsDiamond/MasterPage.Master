@@ -28,8 +28,8 @@
                           <asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/Views/ViewJewels.aspx" CssClass="nav-link">Home</asp:HyperLink>
                       </ul>
                         <div style="gap:30px">
-                            <asp:Button ID="Btn_SignIn" runat="server" CssClass="btn btn-outline-primary" Text="Sign In" OnClick="SignIn_Button" />
-                            <asp:Button ID="Btn_SignUp" runat="server" CssClass="btn btn-primary" Text="Sign Up" OnClick="SignUp_Button" />
+                            <asp:Button ID="Btn_SignIn" runat="server" CssClass="btn btn-outline-primary" Text="Login" OnClick="SignIn_Button" />
+                            <asp:Button ID="Btn_SignUp" runat="server" CssClass="btn btn-primary" Text="Register" OnClick="SignUp_Button" />
                         </div> 
                     </div>
                   </div>

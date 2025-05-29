@@ -40,7 +40,7 @@
     <asp:GridView ID="OrderGrid" runat="server" AutoGenerateColumns="false" CssClass="gridview-style">
         <Columns>
             <asp:BoundField DataField="TransactionID" HeaderText="Transaction ID" SortExpression="TransactionID"></asp:BoundField>
-            <asp:BoundField DataField="TransactionDate" HeaderText="Date" SortExpression="TransactionDate" DataFormatString="{0:yyyy-MM-dd HH:mm:ss}"></asp:BoundField>
+            <asp:BoundField DataField="TransactionDate" HeaderText="Date" SortExpression="TransactionDate" DataFormatString="{0:yyyy-MM-dd}"></asp:BoundField>
             <asp:BoundField DataField="PaymentMethod" HeaderText="Payment" SortExpression="PaymentMethod"></asp:BoundField>
             <asp:BoundField DataField="TransactionStatus" HeaderText="Status" SortExpression="TransactionStatus"></asp:BoundField>
             <asp:TemplateField HeaderText="Actions">

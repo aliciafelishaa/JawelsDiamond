@@ -30,8 +30,8 @@
         }
 
         .gridview-style th {
-            background-color: #fff700;
-            color: black;
+            background-color: dodgerblue;
+            color: white;
         }
 
         .gridview-style tr:nth-child(even) {
@@ -132,7 +132,7 @@
 
             <asp:Button ID="Btn_ClearCart" runat="server" Text="Clear Cart" CssClass="btn btn-outline-danger w-100" OnClick="Btn_ClearCart_Click"/>
             <br /><br />
-            <asp:Button ID="Btn_Checkout" runat="server" Text="Checkout" CssClass="btn btn-success w-100" OnClick="Btn_Checkout_Click"/>
+            <asp:Button ID="Btn_Checkout" runat="server" Text="Checkout" CssClass="btn btn-primary w-100" OnClick="Btn_Checkout_Click"/>
         </div>
     </div>
     </div>
