@@ -74,18 +74,18 @@ namespace JawelsDiamond.Views.Admin
             string error = UpdateItem.checkItem(jewelName, brand, category, price, releaseYear);
             errorMsg.Text = error;
 
-           
-                Console.WriteLine("test");
-                var jewels = JewelsRepository.findJewel(jewelId);
-                jewels.JewelName = jewelName;
-                jewels.MsBrand.BrandName = brand;
-                jewels.MsCategory.CategoryName = category;
-                jewels.JewelPrice = Convert.ToInt32(price);
-                jewels.JewelReleaseYear = Convert.ToInt32(releaseYear);
 
-                JewelsRepository.EditJewel(jewels);
-                Response.Redirect("~/Views/JewelDetail.aspx");
-            
+            Console.WriteLine("test");
+            var jewels = JewelsRepository.findJewel(jewelId);
+            jewels.JewelName = jewelName;
+            jewels.MsBrand.BrandName = brand;
+            jewels.MsCategory.CategoryName = category;
+            jewels.JewelPrice = Convert.ToInt32(price);
+            jewels.JewelReleaseYear = Convert.ToInt32(releaseYear);
+
+            JewelsRepository.EditJewel(jewels);
+            Response.Redirect("~/Views/JewelDetail.aspx");
+
         }
     }
 }

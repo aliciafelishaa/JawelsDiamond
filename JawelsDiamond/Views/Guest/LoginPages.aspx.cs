@@ -53,6 +53,7 @@ namespace JawelsDiamond.Views
                 return;
             }
 
+            //Validate
             MsUser loginUser = UserRepository.LoginUser(email, password);
             if (loginUser == null)
             {
@@ -66,7 +67,6 @@ namespace JawelsDiamond.Views
                 {
                     HttpCookie cookie = new HttpCookie("user_cookie");
                     cookie.Value = loginUser.UserID.ToString();
-                    //cookie.Expires = DateTime.Now.AddMinutes(1);
                     cookie.Expires = DateTime.Now.AddHours(1);
                     Response.Cookies.Add(cookie);
                 }
