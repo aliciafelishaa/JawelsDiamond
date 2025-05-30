@@ -11,9 +11,8 @@ namespace JawelsDiamond.Repository
     {
         //private static Database1Entities db = new Database1Entities();
         private static Database1Entities db = DatabaseSingleton.getInstance();
-        public static String CreateNewUser(String email, String username, String password, String Gender, DateTime DOB, String role)
+        public static String CreateNewUser(MsUser newUser)
         {
-            MsUser newUser = UserFactory.CreateNewUser(email, username, password, Gender, DOB, role);
             db.MsUsers.Add(newUser);
             db.SaveChanges();
             return "Registration Success";
@@ -23,6 +22,10 @@ namespace JawelsDiamond.Repository
             Database1Entities db = new Database1Entities();
             MsUser loginUser = (from x in db.MsUsers where x.UserEmail == email && x.UserPassword == password select x).FirstOrDefault();
             return loginUser;
+        }
+        public static bool IsEmailExists(string email)
+        {
+            return db.MsUsers.Any(u => u.UserEmail == email);
         }
 
         public static List<MsUser> getUser()

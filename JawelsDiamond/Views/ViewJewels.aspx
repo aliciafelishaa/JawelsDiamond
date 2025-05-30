@@ -32,17 +32,27 @@
         align-items: center;
         justify-content: center
     }
+    .header-cart {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    color: #333;
+    font-weight: bold;
+}
+
 </style>
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+    <div class="header-cart">
+    <asp:Label ID="Header" runat="server" Text=""></asp:Label>
+    </div>
     <h2 class="header-jwls">View Jewels</h2>
     <asp:GridView ID="JewelGrid" runat="server" AutoGenerateColumns="false" CssClass="gridview-style">
         <Columns>
             <asp:BoundField DataField="JewelID" HeaderText="Jewel ID" SortExpression="JewelID"></asp:BoundField>
             <asp:BoundField DataField="JewelName" HeaderText="Jewel Name" SortExpression="JewelName"></asp:BoundField>
-           <asp:BoundField DataField="JewelPrice" HeaderText="Jewel Price" DataFormatString="{0:C}" HtmlEncode="false" SortExpression="JewelPrice" />
-            
+          <asp:BoundField DataField="JewelPrice" HeaderText="Jewel Price" DataFormatString="${0:N2}" HtmlEncode="false" SortExpression="JewelPrice" />
             <asp:HyperLinkField DataNavigateUrlFields="JewelID" DataNavigateUrlFormatString="JewelDetail.aspx?id={0}" Text="See Details" HeaderText="Actions"></asp:HyperLinkField>
         </Columns>
     </asp:GridView>
