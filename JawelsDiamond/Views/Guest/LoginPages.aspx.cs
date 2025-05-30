@@ -1,8 +1,13 @@
-﻿using JawelsDiamond.Model;
+﻿using JawelsDiamond.Controller;
+using JawelsDiamond.Model;
 using JawelsDiamond.Repository;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -46,34 +51,15 @@ namespace JawelsDiamond.Views
             String email = TB_Email.Text;
             String password = TB_Password.Text;
             Boolean isRemember = CBox_RememberMe.Checked;
-            if (email == null || password == null)
+
+            string errorMsg = Auth.checkUser(email,password,isRemember, Response, Session);
+
+            if (!string.IsNullOrEmpty(errorMsg))
             {
-                Lbl_Status.Text = "All fields must be filled.";
-                Lbl_Status.ForeColor = System.Drawing.Color.Red;
-                return;
+                Lbl_Status.Text = errorMsg;
+                Lbl_Status.ForeColor = Color.Red;
             }
 
-            //Validate
-            MsUser loginUser = UserRepository.LoginUser(email, password);
-            if (loginUser == null)
-            {
-                Lbl_Status.Text = "Incorrect email or password";
-                Lbl_Status.ForeColor = System.Drawing.Color.Red;
-                return;
-            }
-            else
-            {
-                if (isRemember == true)
-                {
-                    HttpCookie cookie = new HttpCookie("user_cookie");
-                    cookie.Value = loginUser.UserID.ToString();
-                    cookie.Expires = DateTime.Now.AddHours(1);
-                    Response.Cookies.Add(cookie);
-                }
-                Session["user"] = loginUser;
-                Session["role"] = loginUser.UserRole.ToLower() ?? "guest";
-                Response.Redirect("~/Views/ViewJewels.aspx");
-            }
         }
 
         protected void Link_Btn_ToRegister_Click(object sender, EventArgs e)

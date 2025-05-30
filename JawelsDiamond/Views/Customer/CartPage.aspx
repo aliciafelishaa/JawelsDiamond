@@ -114,14 +114,14 @@
     <div class="checkout-panel">
         <div class="checkout-box">
             <asp:Label ID="Lbl_TotalPrice" runat="server" Text="Total Price: " CssClass="fw-bold"></asp:Label>
-            <asp:Label ID="Lbl_TotalPriceValue" runat="server" Text="$0.00" CssClass="fw-bold"></asp:Label>
+            <asp:Label ID="Lbl_TotalPriceValue" runat="server" Text="$0.00" DataFormatString="{0:C}" CssClass="fw-bold"></asp:Label>
 
             <br /><br />
 
             <asp:Label ID="Lbl_PaymentMethod" runat="server" Text="Payment Method:" AssociatedControlID="PaymentDropdown"></asp:Label><br />
             <asp:DropDownList ID="PaymentDropdown" runat="server" CssClass="form-control">
                 <asp:ListItem Text="-- Select Payment Method --" Value="" />
-                <asp:ListItem Text="Credit Card" Value="Credit" />
+                <asp:ListItem Text="Credit Card" Value="Credit Card" />
                 <asp:ListItem Text="PayPal" Value="Paypal" />
                 <asp:ListItem Text="Bank Transfer" Value="Bank" />
                 <asp:ListItem Text="Cash" Value="Cash" />
@@ -133,6 +133,7 @@
             <asp:Button ID="Btn_ClearCart" runat="server" Text="Clear Cart" CssClass="btn btn-outline-danger w-100" OnClick="Btn_ClearCart_Click"/>
             <br /><br />
             <asp:Button ID="Btn_Checkout" runat="server" Text="Checkout" CssClass="btn btn-primary w-100" OnClick="Btn_Checkout_Click"/>
+            <asp:Label ID="err_message" runat="server" Text="" Style="color:red; padding-top:4px;"></asp:Label>
         </div>
     </div>
     </div>

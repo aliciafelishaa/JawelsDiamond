@@ -1,4 +1,5 @@
-﻿using JawelsDiamond.Repository;
+﻿using JawelsDiamond.Model;
+using JawelsDiamond.Repository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,20 @@ namespace JawelsDiamond.Views
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if (!IsPostBack)
+            if (Session["user"] != null)
+            {
+                MsUser sessionUser = (MsUser)Session["user"];
+                Header.Text = "Welcome " + sessionUser.UserName + "!";
+                Header.Visible = true;
+            }
+            else
+            {
+                Header.Visible = false;
+            }
+            if (!IsPostBack)
 			{
 				LoadJewels();
+				
 			}
 		}
 

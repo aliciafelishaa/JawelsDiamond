@@ -87,9 +87,6 @@ namespace JawelsDiamond.Views.Customer
 
         protected void CartGrid_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            //Button btn = (Button)sender;
-            //GridViewRow row = (GridViewRow)btn.NamingContainer;
-            //int jewelId = Convert.ToInt32(CartGrid.DataKeys[row.RowIndex].Value);
 
             int jewelId = 0;
             if (e.RowIndex >= 0 && e.RowIndex < CartGrid.DataKeys.Count)
@@ -126,17 +123,6 @@ namespace JawelsDiamond.Views.Customer
             Response.Redirect($"~/Views/Customer/UpdateJewelQuantityPage.aspx?id={jewelId}");
         }
 
-
-        protected void btnUpdate_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnDelete_Click(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Btn_ClearCart_Click(object sender, EventArgs e)
         {
             if(Session["user"] != null)
@@ -165,9 +151,16 @@ namespace JawelsDiamond.Views.Customer
             int userId = currentUser.UserID;
             List<Cart> cartItems = CartRepository.GetCartItems(userId);
 
+            if (string.IsNullOrEmpty(PaymentDropdown.SelectedValue))
+            {
+                err_message.Text = "Please select a payment method.";
+                return;
+            }
+
             if (cartItems == null || cartItems.Count == 0)
             {
-                Response.Write("<script>alert('Cart is empty. Cannot proceed to checkout.');</script>");
+                //Response.Write("<script>alert('Cart is empty. Cannot proceed to checkout.');</script>");
+                err_message.Text = "Cart is Empty. Cannot proceed to checkout.";
                 return;
             }
 

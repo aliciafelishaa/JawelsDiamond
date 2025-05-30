@@ -123,6 +123,15 @@ namespace JawelsDiamond
         protected global::System.Web.UI.WebControls.HyperLink HyperLink4;
 
         /// <summary>
+        /// HeaderAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label HeaderAdmin;
+
+        /// <summary>
         /// Btn_SignOut control.
         /// </summary>
         /// <remarks>
@@ -175,6 +184,15 @@ namespace JawelsDiamond
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink HyperLink7;
+
+        /// <summary>
+        /// HeaderCustomer control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label HeaderCustomer;
 
         /// <summary>
         /// Btn_SignOut2 control.

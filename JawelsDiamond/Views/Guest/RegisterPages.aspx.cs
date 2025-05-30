@@ -1,6 +1,9 @@
-﻿using JawelsDiamond.Repository;
+﻿using JawelsDiamond.Controller;
+using JawelsDiamond.Handler;
+using JawelsDiamond.Repository;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -22,38 +25,28 @@ namespace JawelsDiamond
             String password = TB_Password.Text;
             String confirmpass = TB_ConfirmPass.Text;
             String selectedGender = RBL_Gender.SelectedValue;
-            DateTime selectedDOB = DateTime.Parse(TB_DOB.Text);
-            DateTime cutoffDate = new DateTime(2010, 1, 1);
+            DateTime selectedDOB;
 
-            if (email == "" || username == "" || password == "" || confirmpass == "" || selectedGender == "" || selectedDOB == DateTime.MinValue)
+            //Parse DOB sbg string terlebih dahulu
+            if (!DateTime.TryParse(TB_DOB.Text, out selectedDOB))
             {
-                Lbl_Status.Text = "All fields must be filled.";
+                Lbl_Status.Text = "Invalid Date of Birth format. Please enter a valid date (e.g., YYYY-MM-DD).";
+                Lbl_Status.ForeColor = Color.Red;
+                return; 
+            }
+
+            //Controller validasi
+            string errorMsg = Auth.registCheckUser(email, username, password, confirmpass, selectedGender, selectedDOB);
+            if (!string.IsNullOrEmpty(errorMsg))
+            {
+                Lbl_Status.Text = errorMsg;
+                Lbl_Status.ForeColor = Color.Red;
                 return;
             }
-            else if (password != confirmpass)
-            {
-                Lbl_Status.Text = "Password doesnt match.";
-                Lbl_Status.ForeColor = System.Drawing.Color.Red;
-                return;
-            }
-            else if (email.IndexOf("@") == -1 || email.IndexOf("@") == 0 || email.IndexOf("@") == email.Length - 1 || email.IndexOf(".") == -1 || email.IndexOf(".") == 0 || email.IndexOf(".") == email.Length - 1)
-            {
-                Lbl_Status.Text = "Email must contain @ in the right place.";
-                Lbl_Status.ForeColor = System.Drawing.Color.Red;
-                return;
-            }
-            else if (selectedDOB >= cutoffDate)
-            {
-                Lbl_Status.Text = "Date must be earlier than 01/01/2010.";
-                Lbl_Status.ForeColor = System.Drawing.Color.Red;
-                return;
-            }
-            String role = "customer";
-            if (email.Contains("admin"))
-            {
-                role = "admin";
-            }
-            Lbl_Status.Text = UserRepository.CreateNewUser(email, username, password, selectedGender, selectedDOB, role);
+
+            //Handler bussiness logic
+            string result = AuthHandler.RegisterNewUser(email, username, password, selectedGender, selectedDOB);
+            Lbl_Status.Text = result;
             Response.Redirect("LoginPages.aspx");
         }
 

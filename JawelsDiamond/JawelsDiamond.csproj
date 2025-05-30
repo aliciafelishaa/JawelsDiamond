@@ -1271,6 +1271,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\AddItem.cs" />
+    <Compile Include="Controller\Auth.cs" />
+    <Compile Include="Controller\CheckPassword.cs" />
     <Compile Include="Controller\UpdateItem.cs" />
     <Compile Include="CrystalReports.cs">
       <AutoGen>True</AutoGen>
@@ -1289,6 +1291,7 @@
     <Compile Include="Factory\CartFactory.cs" />
     <Compile Include="Factory\JewelFactory.cs" />
     <Compile Include="Factory\UserFactory.cs" />
+    <Compile Include="Handler\AuthHandler.cs" />
     <Compile Include="Handler\JewelsHandler.cs" />
     <Compile Include="Handler\TransactionHandlers.cs" />
     <Compile Include="MasterPage.Master.cs">

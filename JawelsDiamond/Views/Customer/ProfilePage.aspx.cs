@@ -2,6 +2,7 @@
 using System.Web.UI;
 using JawelsDiamond.Model;
 using JawelsDiamond.Repository;
+using JawelsDiamond.Controller;
 
 namespace JawelsDiamond.Views
 {
@@ -38,24 +39,14 @@ namespace JawelsDiamond.Views
             string newPassword = txtNewPassword.Text.Trim();
             string confirmPassword = txtConfirmPassword.Text.Trim();
 
-            var currentUser = (MsUser)Session["user"];
+            MsUser currentUser = (MsUser)Session["user"];
 
-            if (currentUser.UserPassword != oldPassword)
-            {
-                lblErrorMessage.Text = "Old password is incorrect.";
-              
-                return;
-            }
+            String errorMsg = CheckPassword.ValidatePassword(oldPassword, newPassword, confirmPassword, currentUser);
 
-            if(newPassword.Length <= 8 || newPassword.Length >= 25)
+            if (errorMsg != "")
             {
-                lblErrorMessage.Text = "Password must be between 8 to 25 characters and alphanumeric";
-                return;
-            }
-
-            if (newPassword != confirmPassword)
-            {
-                lblErrorMessage.Text = "Confirm password does not match new password.";
+                lblErrorMessage.ForeColor = System.Drawing.Color.Red;
+                lblErrorMessage.Text = errorMsg;
                 return;
             }
 
