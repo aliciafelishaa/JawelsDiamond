@@ -41,20 +41,21 @@ namespace JawelsDiamond.Views.Admin
                 hrow["TransactionStatus"] = t.TransactionStatus;
                 headerTable.Rows.Add(hrow);
 
-                if (t.TransactionDetail != null)
+                if (t.TransactionDetails != null)
                 {
-                    var detail = t.TransactionDetail;
+                    foreach (var detail in t.TransactionDetails)
+                    {
+                        var drow = detailTable.NewRow();
+                        drow["TransactionID"] = detail.TransactionID;
+                        drow["Quantity"] = detail.Quantity;
+                        drow["JewelID"] = detail.JewelID;
 
-                    var drow = detailTable.NewRow();
-                    drow["TransactionID"] = detail.TransactionID;
-                    drow["Quantity"] = detail.Quantity;
-                    drow["JewelID"] = detail.JewelID;
+                        int price = detail.MsJewel?.JewelPrice ?? 0;
+                        drow["Price"] = price;
+                        drow["Subtotal"] = price * detail.Quantity;
 
-                    int price = detail.MsJewel?.JewelPrice ?? 0;
-                    drow["Price"] = price;
-                    drow["Subtotal"] = price * detail.Quantity;
-
-                    detailTable.Rows.Add(drow);
+                        detailTable.Rows.Add(drow);
+                    }
                 }
             }
 

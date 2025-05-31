@@ -94,10 +94,10 @@
             <Columns>
                 <asp:BoundField DataField="JewelID" HeaderText="Jewel ID" />
                 <asp:BoundField DataField="JewelName" HeaderText="Jewel Name" />
-                <asp:BoundField DataField="JewelPrice" HeaderText="Price" DataFormatString="{0:C}" />
+                <asp:BoundField DataField="JewelPrice" HeaderText="Price"  DataFormatString="${0:N2}" HtmlEncode="false" />
                 <asp:BoundField DataField="BrandName" HeaderText="Brand" />
                 <asp:BoundField DataField="Quantity" HeaderText="Quantity" />
-                <asp:BoundField DataField="Subtotal" HeaderText="Subtotal" DataFormatString="{0:C}" />
+                <asp:BoundField DataField="Subtotal" HeaderText="Subtotal"  DataFormatString="${0:N2}" HtmlEncode="false" />
                 <asp:TemplateField HeaderText="Actions">
                     <ItemTemplate>
                         <asp:Button ID="btnUpdate" UseSubmitBehavior="false" runat="server" CommandName="Edit"

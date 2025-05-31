@@ -25,12 +25,12 @@ namespace JawelsDiamond.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Cart> Carts { get; set; }
         public virtual DbSet<MsBrand> MsBrands { get; set; }
         public virtual DbSet<MsCategory> MsCategories { get; set; }
         public virtual DbSet<MsJewel> MsJewels { get; set; }
         public virtual DbSet<MsUser> MsUsers { get; set; }
         public virtual DbSet<TransactionDetail> TransactionDetails { get; set; }
         public virtual DbSet<TransactionHeader> TransactionHeaders { get; set; }
-        public virtual DbSet<Cart> Carts { get; set; }
     }
 }

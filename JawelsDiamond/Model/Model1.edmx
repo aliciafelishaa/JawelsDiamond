@@ -56,6 +56,7 @@
         <EntityType Name="TransactionDetail">
           <Key>
             <PropertyRef Name="TransactionID" />
+            <PropertyRef Name="JewelID" />
           </Key>
           <Property Name="TransactionID" Type="int" Nullable="false" />
           <Property Name="Quantity" Type="int" Nullable="false" />
@@ -123,19 +124,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TransactionDetail_ToTable">
-          <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="1" />
-          <End Role="TransactionDetail" Type="Self.TransactionDetail" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="TransactionHeader">
-              <PropertyRef Name="TransactionID" />
-            </Principal>
-            <Dependent Role="TransactionDetail">
-              <PropertyRef Name="TransactionID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TransactionDetail_ToTable2">
+        <Association Name="FK_TransactionDetail_ToMsJewel">
           <End Role="MsJewel" Type="Self.MsJewel" Multiplicity="1" />
           <End Role="TransactionDetail" Type="Self.TransactionDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -144,6 +133,18 @@
             </Principal>
             <Dependent Role="TransactionDetail">
               <PropertyRef Name="JewelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TransactionDetail_ToTransactionHeader">
+          <End Role="TransactionHeader" Type="Self.TransactionHeader" Multiplicity="1" />
+          <End Role="TransactionDetail" Type="Self.TransactionDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TransactionHeader">
+              <PropertyRef Name="TransactionID" />
+            </Principal>
+            <Dependent Role="TransactionDetail">
+              <PropertyRef Name="TransactionID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -183,12 +184,12 @@
             <End Role="MsCategory" EntitySet="MsCategory" />
             <End Role="MsJewel" EntitySet="MsJewel" />
           </AssociationSet>
-          <AssociationSet Name="FK_TransactionDetail_ToTable" Association="Self.FK_TransactionDetail_ToTable">
-            <End Role="TransactionHeader" EntitySet="TransactionHeader" />
+          <AssociationSet Name="FK_TransactionDetail_ToMsJewel" Association="Self.FK_TransactionDetail_ToMsJewel">
+            <End Role="MsJewel" EntitySet="MsJewel" />
             <End Role="TransactionDetail" EntitySet="TransactionDetail" />
           </AssociationSet>
-          <AssociationSet Name="FK_TransactionDetail_ToTable2" Association="Self.FK_TransactionDetail_ToTable2">
-            <End Role="MsJewel" EntitySet="MsJewel" />
+          <AssociationSet Name="FK_TransactionDetail_ToTransactionHeader" Association="Self.FK_TransactionDetail_ToTransactionHeader">
+            <End Role="TransactionHeader" EntitySet="TransactionHeader" />
             <End Role="TransactionDetail" EntitySet="TransactionDetail" />
           </AssociationSet>
           <AssociationSet Name="FK_TransactionHeader_ToTable" Association="Self.FK_TransactionHeader_ToTable">
@@ -201,13 +202,21 @@
     <edmx:ConceptualModels>
       <Schema Namespace="Database1Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="Database1Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Carts" EntityType="Database1Model.Cart" />
           <EntitySet Name="MsBrands" EntityType="Database1Model.MsBrand" />
           <EntitySet Name="MsCategories" EntityType="Database1Model.MsCategory" />
           <EntitySet Name="MsJewels" EntityType="Database1Model.MsJewel" />
           <EntitySet Name="MsUsers" EntityType="Database1Model.MsUser" />
           <EntitySet Name="TransactionDetails" EntityType="Database1Model.TransactionDetail" />
           <EntitySet Name="TransactionHeaders" EntityType="Database1Model.TransactionHeader" />
-          <EntitySet Name="Carts" EntityType="Database1Model.Cart" />
+          <AssociationSet Name="FK_Cart_ToTable" Association="Database1Model.FK_Cart_ToTable">
+            <End Role="MsUser" EntitySet="MsUsers" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cart_ToTable2" Association="Database1Model.FK_Cart_ToTable2">
+            <End Role="MsJewel" EntitySet="MsJewels" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
           <AssociationSet Name="FK_MsJewel_ToTable" Association="Database1Model.FK_MsJewel_ToTable">
             <End Role="MsBrand" EntitySet="MsBrands" />
             <End Role="MsJewel" EntitySet="MsJewels" />
@@ -216,27 +225,30 @@
             <End Role="MsCategory" EntitySet="MsCategories" />
             <End Role="MsJewel" EntitySet="MsJewels" />
           </AssociationSet>
-          <AssociationSet Name="FK_Cart_ToTable2" Association="Database1Model.FK_Cart_ToTable2">
-            <End Role="MsJewel" EntitySet="MsJewels" />
-            <End Role="Cart" EntitySet="Carts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TransactionDetail_ToTable2" Association="Database1Model.FK_TransactionDetail_ToTable2">
+          <AssociationSet Name="FK_TransactionDetail_ToMsJewel" Association="Database1Model.FK_TransactionDetail_ToMsJewel">
             <End Role="MsJewel" EntitySet="MsJewels" />
             <End Role="TransactionDetail" EntitySet="TransactionDetails" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Cart_ToTable" Association="Database1Model.FK_Cart_ToTable">
-            <End Role="MsUser" EntitySet="MsUsers" />
-            <End Role="Cart" EntitySet="Carts" />
           </AssociationSet>
           <AssociationSet Name="FK_TransactionHeader_ToTable" Association="Database1Model.FK_TransactionHeader_ToTable">
             <End Role="MsUser" EntitySet="MsUsers" />
             <End Role="TransactionHeader" EntitySet="TransactionHeaders" />
           </AssociationSet>
-          <AssociationSet Name="FK_TransactionDetail_ToTable" Association="Database1Model.FK_TransactionDetail_ToTable">
+          <AssociationSet Name="FK_TransactionDetail_ToTransactionHeader" Association="Database1Model.FK_TransactionDetail_ToTransactionHeader">
             <End Role="TransactionHeader" EntitySet="TransactionHeaders" />
             <End Role="TransactionDetail" EntitySet="TransactionDetails" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="JewelID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="JewelID" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="MsUser" Relationship="Database1Model.FK_Cart_ToTable" FromRole="Cart" ToRole="MsUser" />
+          <NavigationProperty Name="MsJewel" Relationship="Database1Model.FK_Cart_ToTable2" FromRole="Cart" ToRole="MsJewel" />
+        </EntityType>
         <EntityType Name="MsBrand">
           <Key>
             <PropertyRef Name="BrandID" />
@@ -265,10 +277,10 @@
           <Property Name="JewelName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="JewelPrice" Type="Int32" Nullable="false" />
           <Property Name="JewelReleaseYear" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Carts" Relationship="Database1Model.FK_Cart_ToTable2" FromRole="MsJewel" ToRole="Cart" />
           <NavigationProperty Name="MsBrand" Relationship="Database1Model.FK_MsJewel_ToTable" FromRole="MsJewel" ToRole="MsBrand" />
           <NavigationProperty Name="MsCategory" Relationship="Database1Model.FK_MsJewel_ToTable2" FromRole="MsJewel" ToRole="MsCategory" />
-          <NavigationProperty Name="Carts" Relationship="Database1Model.FK_Cart_ToTable2" FromRole="MsJewel" ToRole="Cart" />
-          <NavigationProperty Name="TransactionDetails" Relationship="Database1Model.FK_TransactionDetail_ToTable2" FromRole="MsJewel" ToRole="TransactionDetail" />
+          <NavigationProperty Name="TransactionDetails" Relationship="Database1Model.FK_TransactionDetail_ToMsJewel" FromRole="MsJewel" ToRole="TransactionDetail" />
         </EntityType>
         <EntityType Name="MsUser">
           <Key>
@@ -287,12 +299,13 @@
         <EntityType Name="TransactionDetail">
           <Key>
             <PropertyRef Name="TransactionID" />
+            <PropertyRef Name="JewelID" />
           </Key>
           <Property Name="TransactionID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
           <Property Name="JewelID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MsJewel" Relationship="Database1Model.FK_TransactionDetail_ToTable2" FromRole="TransactionDetail" ToRole="MsJewel" />
-          <NavigationProperty Name="TransactionHeader" Relationship="Database1Model.FK_TransactionDetail_ToTable" FromRole="TransactionDetail" ToRole="TransactionHeader" />
+          <NavigationProperty Name="MsJewel" Relationship="Database1Model.FK_TransactionDetail_ToMsJewel" FromRole="TransactionDetail" ToRole="MsJewel" />
+          <NavigationProperty Name="TransactionHeader" Relationship="Database1Model.FK_TransactionDetail_ToTransactionHeader" FromRole="TransactionDetail" ToRole="TransactionHeader" />
         </EntityType>
         <EntityType Name="TransactionHeader">
           <Key>
@@ -304,19 +317,36 @@
           <Property Name="PaymentMethod" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="TransactionStatus" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MsUser" Relationship="Database1Model.FK_TransactionHeader_ToTable" FromRole="TransactionHeader" ToRole="MsUser" />
-          <NavigationProperty Name="TransactionDetail" Relationship="Database1Model.FK_TransactionDetail_ToTable" FromRole="TransactionHeader" ToRole="TransactionDetail" />
+          <NavigationProperty Name="TransactionDetails" Relationship="Database1Model.FK_TransactionDetail_ToTransactionHeader" FromRole="TransactionHeader" ToRole="TransactionDetail" />
         </EntityType>
-        <EntityType Name="Cart">
-          <Key>
-            <PropertyRef Name="UserID" />
-            <PropertyRef Name="JewelID" />
-          </Key>
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <Property Name="JewelID" Type="Int32" Nullable="false" />
-          <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="MsJewel" Relationship="Database1Model.FK_Cart_ToTable2" FromRole="Cart" ToRole="MsJewel" />
-          <NavigationProperty Name="MsUser" Relationship="Database1Model.FK_Cart_ToTable" FromRole="Cart" ToRole="MsUser" />
-        </EntityType>
+        <Association Name="FK_Cart_ToTable">
+          <End Type="Database1Model.MsUser" Role="MsUser" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Database1Model.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MsUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cart_ToTable2">
+          <End Type="Database1Model.MsJewel" Role="MsJewel" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Database1Model.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MsJewel">
+              <PropertyRef Name="JewelID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="JewelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MsJewel_ToTable">
           <End Type="Database1Model.MsBrand" Role="MsBrand" Multiplicity="1" />
           <End Type="Database1Model.MsJewel" Role="MsJewel" Multiplicity="*" />
@@ -341,19 +371,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Cart_ToTable2">
-          <End Type="Database1Model.MsJewel" Role="MsJewel" Multiplicity="1" />
-          <End Type="Database1Model.Cart" Role="Cart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MsJewel">
-              <PropertyRef Name="JewelID" />
-            </Principal>
-            <Dependent Role="Cart">
-              <PropertyRef Name="JewelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TransactionDetail_ToTable2">
+        <Association Name="FK_TransactionDetail_ToMsJewel">
           <End Type="Database1Model.MsJewel" Role="MsJewel" Multiplicity="1" />
           <End Type="Database1Model.TransactionDetail" Role="TransactionDetail" Multiplicity="*" />
           <ReferentialConstraint>
@@ -362,18 +380,6 @@
             </Principal>
             <Dependent Role="TransactionDetail">
               <PropertyRef Name="JewelID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Cart_ToTable">
-          <End Type="Database1Model.MsUser" Role="MsUser" Multiplicity="1" />
-          <End Type="Database1Model.Cart" Role="Cart" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="MsUser">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Cart">
-              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -389,9 +395,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TransactionDetail_ToTable">
+        <Association Name="FK_TransactionDetail_ToTransactionHeader">
           <End Type="Database1Model.TransactionHeader" Role="TransactionHeader" Multiplicity="1" />
-          <End Type="Database1Model.TransactionDetail" Role="TransactionDetail" Multiplicity="0..1" />
+          <End Type="Database1Model.TransactionDetail" Role="TransactionDetail" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TransactionHeader">
               <PropertyRef Name="TransactionID" />
@@ -407,6 +413,15 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Database1ModelStoreContainer" CdmEntityContainer="Database1Entities">
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="Database1Model.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="JewelID" ColumnName="JewelID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="MsBrands">
             <EntityTypeMapping TypeName="Database1Model.MsBrand">
               <MappingFragment StoreEntitySet="MsBrand">
@@ -467,15 +482,6 @@
                 <ScalarProperty Name="TransactionDate" ColumnName="TransactionDate" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="TransactionID" ColumnName="TransactionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Carts">
-            <EntityTypeMapping TypeName="Database1Model.Cart">
-              <MappingFragment StoreEntitySet="Cart">
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="JewelID" ColumnName="JewelID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
