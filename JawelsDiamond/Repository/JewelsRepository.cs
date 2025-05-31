@@ -63,8 +63,8 @@ namespace JawelsDiamond.Repository
             if (existingJewel != null)
             {
                 existingJewel.JewelName = updatedJewel.JewelName;
-                existingJewel.MsBrand.BrandName = updatedJewel.MsBrand.BrandName;
-                existingJewel.MsCategory.CategoryName = updatedJewel.MsCategory.CategoryName;
+                existingJewel.BrandID = updatedJewel.BrandID; 
+                existingJewel.CategoryID = updatedJewel.CategoryID;
                 existingJewel.JewelPrice = updatedJewel.JewelPrice;
                 existingJewel.JewelReleaseYear = updatedJewel.JewelReleaseYear;
 

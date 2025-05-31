@@ -51,7 +51,7 @@ namespace JawelsDiamond.Views.Admin
         {
             var jewels = JewelsRepository.findJewel(jewelId);
             JewelName.Text = jewels.JewelName;
-            JewelBrand.SelectedValue = jewels.BrandID.ToString();
+            JewelBrand.SelectedValue = jewels.BrandID.ToString();       
             JewelCategory.SelectedValue = jewels.CategoryID.ToString();
             JewelPrice.Text = jewels.JewelPrice.ToString();
             JewelReleaseYear.Text = jewels.JewelReleaseYear.ToString();
@@ -59,7 +59,8 @@ namespace JawelsDiamond.Views.Admin
 
         protected void CancelBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("~/Views/Admin/EditJewels.aspx");
+            int jewelId = Convert.ToInt32(Request.QueryString["id"]);
+            Response.Redirect($"~/Views/JewelDetail.aspx?id={jewelId}");
         }
 
         protected void Edit_Click(object sender, EventArgs e)
@@ -78,8 +79,8 @@ namespace JawelsDiamond.Views.Admin
             Console.WriteLine("test");
             var jewels = JewelsRepository.findJewel(jewelId);
             jewels.JewelName = jewelName;
-            jewels.MsBrand.BrandName = brand;
-            jewels.MsCategory.CategoryName = category;
+            jewels.BrandID = Convert.ToInt32(brand);           
+            jewels.CategoryID = Convert.ToInt32(category);
             jewels.JewelPrice = Convert.ToInt32(price);
             jewels.JewelReleaseYear = Convert.ToInt32(releaseYear);
 
